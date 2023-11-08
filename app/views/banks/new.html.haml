@@ -1,0 +1,11 @@
+.modal.fade#myModal{ tabindex: "-1", role: "dialog", aria: { labelledby: "exampleModalLabel", modal: true } }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %h5.modal-title Crear
+        %button.close{ type: "button", data: { dismiss: "modal" }, aria: { label: "Close" } }
+          %span{ aria: { hidden: "true" } } &times;
+      .modal-body
+        = render 'banks/form'  # Esto renderiza el formulario en el modal
+      .modal-footer
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" } } Cerrar
