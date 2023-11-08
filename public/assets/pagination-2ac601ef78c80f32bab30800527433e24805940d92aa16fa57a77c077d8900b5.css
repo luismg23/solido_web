@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/pagination.scss */
+.custom-table-container {
+  position: relative;
+}
+
+/* line 5, app/assets/stylesheets/pagination.scss */
+.pagination-container {
+  position: absolute;
+  bottom: -50px;
+  /* Ajusta el valor según sea necesario */
+  width: 100%;
+}
+
+/* line 12, app/assets/stylesheets/pagination.scss */
+.pagination a {
+  margin: 0 2px;
+  /* Ajusta el valor según el espacio que desees */
+}

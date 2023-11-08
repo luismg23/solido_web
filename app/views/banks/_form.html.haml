@@ -1,0 +1,31 @@
+= form_for bank, html: { class: "form" } do |f|
+  .form-group
+    = f.label :cve_banco
+    = f.text_field :cve_banco, class: "form-control"
+
+  .form-group
+    = f.label :sucursal_banco
+    = f.text_field :sucursal_banco, class: "form-control"
+
+  .form-group
+    = f.label :direccion_banco
+    = f.text_field :direccion_banco, class: "form-control"
+
+  .form-group
+    = f.label :telefono_banco
+    = f.text_field :telefono_banco, class: "form-control"
+
+  .form-group
+    = f.label :nombre_banco
+    = f.text_field :nombre_banco, class: "form-control"
+
+  .form-group
+    = f.label :IdInterno
+    = f.text_field :IdInterno, class: "form-control"
+
+  .form-group
+    = f.label :empresa_fk
+    = f.select :empresa_fk, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
+
+  .actions
+    = f.submit 'Guardar', class: "btn btn-success"

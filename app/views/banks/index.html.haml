@@ -1,0 +1,41 @@
+.text-center
+  %h1 Bancos
+
+
+= render partial: 'modal'
+
+.container.mx-auto.my-5.p-3.bg-light
+  %button#crearButton.btn.btn-primary{type: "button"} Crear
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %form{action: "/banks", method: "get"}
+              .input-group.mb-3
+                %input#filtroInput.form-control{type: "text", placeholder: "Buscar por nombre...", name: "search", aria_label: "Buscar"}
+                %button.btn.btn-outline-secondary{type: "submit"} Buscar
+              - if @searched
+                %a.btn.btn-danger{href: "/banks"} Reiniciar Búsqueda
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Clave
+                %th Sucursal
+                %th Dirección del Banco
+                %th Telefono
+                %th Nombre
+            %tbody
+              - @banks.each do |bank|
+                %tr
+                  %td= bank["cve_banco"]
+                  %td= bank["sucursal_banco"]
+                  %td= bank["direccion_banco"]
+                  %td= bank["telefono_banco"]
+                  %td= bank["nombre_banco"]
+
+        .pagination-container
+          = paginate @banks

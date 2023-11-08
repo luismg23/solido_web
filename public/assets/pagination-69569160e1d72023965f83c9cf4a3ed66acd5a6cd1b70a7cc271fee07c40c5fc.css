@@ -1,0 +1,6 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/pagination.scss */
+.pagination a {
+  margin: 0 2px;
+  /* Ajusta el valor según el espacio que desees */
+}
