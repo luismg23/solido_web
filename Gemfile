@@ -8,7 +8,7 @@ gem "rails", "~> 7.0.8"
 gem 'httparty'
 gem 'haml-rails'
 gem 'bootstrap'
-
+gem 'select2-rails', '~> 4.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

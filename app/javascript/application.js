@@ -1,10 +1,13 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
+console.log("entro");
+import "@rails/ujs"
+import "lib/jquery"
+import "select2"
+
 import "controllers"
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
-//= require_tree .
+import "bootstrap"
+
+import debounced from "debounced"
+import Rails from '@rails/ujs'
+
+Rails.start();
+debounced.initialize({ ...debounced.events, keyup: { wait: 400 } })
