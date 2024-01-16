@@ -2,10 +2,20 @@
   %h1 Bancos
 
 
-= render partial: 'modal'
+= render partial: 'create'
+= render partial: 'load'
+
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
 
 .container.mx-auto.my-5.p-3.bg-light
   %button#crearButton.btn.btn-primary{type: "button"} Crear
+  
+  %button#loadButton.btn.btn-primary{type: "button"} Cargar
 
 .container
   .row

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/warnings.scss */
+.danger-text {
+  color: red;
+  font-weight: bold;
+}
+
+/* line 5, app/assets/stylesheets/warnings.scss */
+.icon-spacing {
+  margin-right: 15px;
+  /* Ajusta el tamaño del margen según tus necesidades */
+}

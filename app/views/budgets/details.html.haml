@@ -1,0 +1,105 @@
+.text-center
+  %h1 Presupuesto
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
+
+= render partial: 'create_budgetline'
+= render partial: 'create_check'
+= render partial: 'pending'
+
+
+.container.mx-auto.my-5.p-3.bg-light
+  %label
+    Agregar
+    %button#budget_create_budgetline.btn.btn-primary{type: "button"} + Renglón
+
+    %button#budget_create_check.btn.btn-primary{type: "button"} + Cheque
+
+    %button#loadButton.btn.btn-primary{type: "button"} + Detalle
+
+
+.container.mx-auto.my-5.p-3.bg-light
+  %label
+    Visualizar
+    %button#budget_view_budgetline.btn.btn-primary{type: "button"} Renglones
+
+    %button#budget_view_check.btn.btn-primary{type: "button"} Cheques
+
+    %button#loadButton.btn.btn-primary{type: "button"} Detalles
+
+    %button#loadButton.btn.btn-success{type: "button"} Exportar
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Clave
+                %th Año
+                %th Nombre
+                %th Presupuestado
+                %th Erogado
+                %th Por Erogar
+
+            %tbody
+              %tr
+                %td= @budget["cve_presupuesto"]
+                %td= @budget["anio_presupuesto"]
+                %td= @budget["nombre_presupuesto"]
+                %td{class: numeric_class(@budget["monto_presupuestado"])}
+                  = number_to_currency(@budget["monto_presupuestado"])
+                %td{class: numeric_class(@budget["monto_erogado"])}
+                  = number_to_currency(@budget["monto_erogado"])
+                %td{class: numeric_class(@budget["monto_por_erogar"])}
+                  = number_to_currency(@budget["monto_por_erogar"])
+
+.container.mx-auto.my-5.p-3.bg-light
+  %table.table.text-center
+    %thead
+      %tr
+        %th Total de renglones
+        %th Movimientos Pendientes
+        %th Monto sin asignar
+    %tbody
+      %tr
+        %td= @budgetlines.size
+        %td= link_to "#{@pending.size} movimientos", "#", id: "link_to_pendingModal"
+        %td $0.00
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+
+        .text-center
+          %h1 Renglónes
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Clave
+                %th Nombre
+                %th Presupuestado
+                %th Erogado
+                %th Por Erogar
+
+            %tbody
+              - @budgetlines.each do |budgetline|
+                %tr
+                  %td= budgetline["cve_renglon_presupuestal"]
+                  %td= budgetline["nombre_renglon_presupuestal"]
+                  %td{class: numeric_class(budgetline["monto_presupuestado"])}
+                    = number_to_currency(budgetline["monto_presupuestado"])
+                  %td{class: numeric_class(budgetline["monto_erogado"])}
+                    = number_to_currency(budgetline["monto_erogado"])
+                  %td{class: numeric_class(budgetline["monto_por_erogar"])}
+                    = number_to_currency(budgetline["monto_por_erogar"])

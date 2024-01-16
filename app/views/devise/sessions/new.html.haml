@@ -1,0 +1,24 @@
+.text-center
+  %h1 Iniciar Sesión
+
+.container
+  .row.justify-content-center
+    .col-md-6
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form' }) do |f|
+        .form-group
+          = f.label 'E-mail'
+          = f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email"
+
+        .form-group
+          = f.label 'Password'
+          = f.password_field :password, class: 'form-control', autocomplete: "current-password"
+
+        - if devise_mapping.rememberable?
+          .form-group.form-check
+            = f.check_box :remember_me, class: 'form-check-input'
+            = f.label 'Recordar', class: 'form-check-label'
+
+        .form-group
+          = f.submit "Iniciar Sesión", class: 'btn btn-primary'
+
+      = render "devise/shared/links"

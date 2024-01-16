@@ -1,0 +1,54 @@
+.text-center
+  %h1 Proveedores
+
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
+
+.container.mx-auto.my-5.p-3.bg-light
+  %button#crearButton.btn.btn-primary{type: "button"} Crear
+  
+  %button#loadButton.btn.btn-primary{type: "button"} Cargar
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %form{action: "/suppliers", method: "get"}
+              .input-group.mb-3
+                %input#filtroInput.form-control{type: "text", placeholder: "Buscar por nombre...", name: "search", aria_label: "Buscar"}
+                %button.btn.btn-outline-secondary{type: "submit"} Buscar
+              - if @searched
+                %a.btn.btn-danger{href: "/suppliers"} Reiniciar Búsqueda
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Id
+                %th Nombre
+                %th Calle
+                %th Colonia
+                %th Ciudad
+                %th Estado
+                %th RFC
+                %th Representante
+
+            %tbody
+              - @suppliers.each do |supplier|
+                %tr
+                  %td= supplier["IdProveedor"]
+                  %td= supplier["Nombre"]
+                  %td= supplier["Calle"]
+                  %td= supplier["Colonia"]
+                  %td= supplier["Ciudad"]
+                  %td= supplier["Estado"]
+                  %td= supplier["RFC"]
+                  %td= supplier["Representante"]
+
+        .pagination-container
+          = paginate @suppliers
