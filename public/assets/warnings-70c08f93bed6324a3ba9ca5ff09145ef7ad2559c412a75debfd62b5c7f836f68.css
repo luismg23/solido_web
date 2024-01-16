@@ -1,0 +1,5 @@
+/* line 1, app/assets/stylesheets/warnings.scss */
+.danger-text {
+  color: red;
+  font-weight: bold;
+}

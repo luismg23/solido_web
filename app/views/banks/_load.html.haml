@@ -1,0 +1,16 @@
+.modal.fade#loadModal{ tabindex: "-1", role: "dialog", aria: { labelledby: "exampleModalLabel", modal: true } }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %h5.modal-title Cargar
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" }, aria: { label: "Close" } }
+          %span{ aria: { hidden: "true" } } &times;
+      .modal-body
+        .card-body
+          = form_tag '/upload', id: 'my-dropzone-form' do
+            = hidden_field_tag :authenticity_token, form_authenticity_token
+            #my-dropzone.dropzone
+              = file_field_tag :file, multiple: false, class: "form-control-file", accept: ".csv"
+              = submit_tag 'Cargar', class: "btn btn-primary mt-2"
+      .modal-footer
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" } } Cerrar

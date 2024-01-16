@@ -1,0 +1,34 @@
+= form_for check, html: { class: "form" } do |f|
+  = f.hidden_field :IdInternoPresupuesto, value: budget_id
+
+  .form-group.mb-3
+    %strong= f.label :fecha_emision_cheque, "Fecha y Hora"
+    = f.date_field :fecha_emision_cheque, attribute: 'fecha_emision_cheque', class: 'form-control'
+
+  .form-group.mb-3
+    %strong= f.label :Banco
+    = f.select :IdInternoBanco, @banks.map{ |bank| [bank["sucursal_banco"], bank["IdInterno"]] }, {}, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Proveedor
+    = f.select :IdProveedorFK, @suppliers.map{ |supplier| [supplier["Nombre"], supplier["IdInterno"]] }, {}, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Transacción
+    = f.select :TransaccionType, @payment_methods.map{ |id, description| [description, id] }, {}, class: "form-control"
+
+  .form-group.mb-3
+    = f.label :num_cheque, "Número de cheque", class: "form-label"
+    = f.text_field :num_cheque, class: "form-control"
+
+  .form-group.mb-3
+    = f.label :concepto_cheque, "Concepto", class: "form-label"
+    = f.text_field :concepto_cheque, class: "form-control"
+
+  .form-group.mb-3
+    = f.label :Total, "Total", class: "form-label"
+    = f.text_field :Total, class: "form-control"
+
+
+  .actions.d-flex.justify-content-end
+    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: false

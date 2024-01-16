@@ -1,31 +1,29 @@
 = form_for bank, html: { class: "form" } do |f|
-  .form-group
-    = f.label :cve_banco
+  .form-group.mb-3
+    %strong= f.label :Clave
     = f.text_field :cve_banco, class: "form-control"
+    %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
-  .form-group
-    = f.label :sucursal_banco
+  .form-group.mb-3
+    %strong= f.label :Sucursal
     = f.text_field :sucursal_banco, class: "form-control"
 
-  .form-group
-    = f.label :direccion_banco
+  .form-group.mb-3
+    %strong= f.label :Dirección
     = f.text_field :direccion_banco, class: "form-control"
 
-  .form-group
-    = f.label :telefono_banco
+  .form-group.mb-3
+    %strong= f.label :Telefono
     = f.text_field :telefono_banco, class: "form-control"
+    %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
-  .form-group
-    = f.label :nombre_banco
+  .form-group.mb-3
+    %strong= f.label :Nombre
     = f.text_field :nombre_banco, class: "form-control"
 
-  .form-group
-    = f.label :IdInterno
-    = f.text_field :IdInterno, class: "form-control"
-
-  .form-group
-    = f.label :empresa_fk
+  .form-group.mb-3
+    %strong= f.label :Empresa
     = f.select :empresa_fk, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
 
-  .actions
-    = f.submit 'Guardar', class: "btn btn-success"
+  .actions.d-flex.justify-content-end
+    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: true

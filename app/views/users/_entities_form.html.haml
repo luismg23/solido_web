@@ -1,0 +1,7 @@
+%h2= entity['display_name']
+%form(action="/procesar" method="post" class="mt-3")
+  - translation_dict = @actions
+  - JSON.parse(entity['actions']).each do |action|
+    .form-group
+      %input{type: "checkbox", name: "#{action}", id: "#{action}_#{entity['id']}", class: "form-check-input"}
+      %label{for: "#{action}_#{entity['id']}"}= translation_dict[action]

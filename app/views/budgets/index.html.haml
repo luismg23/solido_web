@@ -1,0 +1,67 @@
+.text-center
+  %h1 Presupuestos
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
+
+.container.mx-auto.my-5.p-3.bg-light
+  %button#crearButton.btn.btn-primary{type: "button"} Crear
+
+
+.container.mx-auto.my-5.p-3.bg-light
+  %label
+    Selecciona un año:
+    
+  .btn-group
+    %form{method: :get, onchange: 'this.submit();'}
+      %select.form-select{name: 'year', class: 'btn btn-success dropdown-toggle'}
+        - @years.each do |opcion|
+          %option{value: opcion, selected: (opcion.to_s == params[:year].to_s)}= opcion
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %form{action: "/budgets", method: "get"}
+              .input-group.mb-3
+                %input#filtroInput.form-control{type: "text", placeholder: "Buscar por nombre...", name: "search", aria_label: "Buscar"}
+                %button.btn.btn-outline-secondary{type: "submit"} Buscar
+              - if @searched
+                %a.btn.btn-danger{href: "/budgets"} Reiniciar Búsqueda
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Clave
+                %th Año
+                %th Nombre
+                %th Monto Presupuestado
+                %th Erogado
+                %th Por Erogar
+                %th Acciones
+
+            %tbody
+              - @budgets.each do |budget|
+                %tr
+                  %td= budget["cve_presupuesto"]
+                  %td= budget["anio_presupuesto"]
+                  %td= budget["nombre_presupuesto"]
+                  %td{class: numeric_class(budget["monto_presupuestado"])}
+                    = number_to_currency(budget["monto_presupuestado"])
+                  %td{class: numeric_class(budget["monto_erogado"])}
+                    = number_to_currency(budget["monto_erogado"])
+                  %td{class: numeric_class(budget["monto_por_erogar"])}
+                    = number_to_currency(budget["monto_por_erogar"])
+                  %td 
+                    = link_to details_budget_path(budget["IdInterno"]), class: 'text-success icon-spacing' do
+                      %i.fa.fa-eye
+                    %i.fa.fa-trash.text-danger
+
+
+        .pagination-container
+          = paginate @budgets

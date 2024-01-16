@@ -1,0 +1,45 @@
+.text-center
+  %h1 Empresas
+
+
+= render partial: 'modal'
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
+
+.container.mx-auto.my-5.p-3.bg-light
+  %button#crearButton.btn.btn-primary{type: "button"} Crear
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %form{action: "/companies", method: "get"}
+              .input-group.mb-3
+                %input#filtroInput.form-control{type: "text", placeholder: "Buscar por nombre...", name: "search", aria_label: "Buscar"}
+                %button.btn.btn-outline-secondary{type: "submit"} Buscar
+              - if @searched
+                %a.btn.btn-danger{href: "/companies"} Reiniciar Búsqueda
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Nombre
+                %th Domicilio
+                %th Telefono
+                %th RFC
+            %tbody
+              - @companies.each do |company|
+                %tr
+                  %td= company["Nombre"]
+                  %td= company["Domicilio"]
+                  %td= company["Telefono"]
+                  %td= company["RFC"]
+
+        .pagination-container
+          = paginate @companies

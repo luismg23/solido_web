@@ -12,11 +12,12 @@ class Bank
     @nombre_banco = attributes[:nombre_banco]
     @IdInterno = attributes[:IdInterno]
     @empresa_fk = attributes[:empresa_fk]
+
   end
 
   def self.all(page = 1, per_page = 10)
-    response = get('/banks/all', query: { page: page, per_page: per_page })
-    response.parsed_response
+    @request_ = RequestHandler.new('banks')
+    @request_.all
   end
 
   def self.by_id(id)
@@ -37,7 +38,6 @@ class Bank
         'Content-Type' => 'application/json'
       }
     )
-  
-    response.parsed_response
+    response.code
   end  
 end
