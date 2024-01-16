@@ -1,5 +1,6 @@
+<br>
 .text-center
-  %h1 Presupuesto
+  %h1 #{@budget["anio_presupuesto"]} - #{@budget["nombre_presupuesto"]}
 
 - if flash[:success].present?
   .alert.alert-success= flash[:success]
@@ -73,7 +74,8 @@
       %tr
         %td= @budgetlines.size
         %td= link_to "#{@pending.size} movimientos", "#", id: "link_to_pendingModal"
-        %td $0.00
+        %td{class: numeric_class(@amount_available)}
+          = number_to_currency(@amount_available)
 
 .container
   .row

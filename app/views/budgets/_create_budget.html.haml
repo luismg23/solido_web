@@ -1,0 +1,11 @@
+.modal.fade#createBudgetModal{ tabindex: "-1", role: "dialog", aria: { labelledby: "exampleModalLabel", modal: true } }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %h5.modal-title Crear Presupuesto
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" }, aria: { label: "Close" } }
+          %span{ aria: { hidden: "true" } } &times;
+      .modal-body
+        = render 'budgets/create_budget_form', budget: @budget, companies: @companies
+      .modal-footer
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" } } Cerrar
