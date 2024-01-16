@@ -10,7 +10,8 @@ class BudgetsController < ApplicationController
       @budgets = Budget.all
       @years = Budget.unique_years
       @searched = false
-    
+      @companies = Company.all
+
       apply_search_filters if params[:search].present?
     
       latest_year = params[:year].presence || @years.max
@@ -19,6 +20,7 @@ class BudgetsController < ApplicationController
       paginate_budgets
     
       @bank = Bank.new
+      @budget = Budget.new
     end
           
     def new
@@ -27,13 +29,13 @@ class BudgetsController < ApplicationController
     end
   
     def create
-      result = Budgetline.create(params)
-      Rails.logger.info "el result es #{result}"
+      result = Budget.create(params)
+
       if result == 200
-        flash[:success] = "La empresa se creó exitosamente."
-        redirect_to index
+        flash[:success] = "El presupuesto se creó exitosamente."
+        redirect_to request.referrer || root_path
       else
-        flash[:error] = "Hubo un error al crear la empresa."
+        flash[:error] = "Hubo un error al crear el presupuesto."
         render :new
       end
     end
@@ -48,6 +50,8 @@ class BudgetsController < ApplicationController
       @banks = Bank.by_company_id(@budget["empresaid"])
       @suppliers = Supplier.by_company_id(@budget["empresaid"])
       @pending = Check.pending(params[:id])
+      @amount_available = budget_amount_available
+      Rails.logger.info " el amount es #{@amount_available}"
     end
 
   private
@@ -64,6 +68,13 @@ class BudgetsController < ApplicationController
 
     def paginate_budgets
       @budgets = Kaminari.paginate_array(@budgets, total_count: @budgets.size).page(params[:page]).per(10)
+    end
+
+    def budget_amount_available
+      amount = @budgetlines.map { |element| element["monto_presupuestado"] }.sum
+      total = @budget["monto_presupuestado"]
+      available = total -= amount
+      available
     end
 
 end

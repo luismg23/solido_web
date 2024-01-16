@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (createBudget){
         createBudget.addEventListener('click', function() {
             console.log('daaa')
-            $('#createBudgetModal').modal('show');
+            $('#createBudget').modal('show');
         })    
     }
 

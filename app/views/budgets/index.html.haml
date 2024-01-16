@@ -7,9 +7,10 @@
 - if flash[:error].present?
   .alert.alert-danger= flash[:error]
 
-.container.mx-auto.my-5.p-3.bg-light
-  %button#crearButton.btn.btn-primary{type: "button"} Crear
+= render partial: 'create_budget'
 
+.container.mx-auto.my-5.p-3.bg-light
+  %button#createBudget.btn.btn-primary{type: "button"} Crear
 
 .container.mx-auto.my-5.p-3.bg-light
   %label
