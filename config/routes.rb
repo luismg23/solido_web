@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :companies
   resources :suppliers
   resources :budgetlines
+  resources :backups
   resources :budgets do
     member do
       get 'details'

@@ -1,0 +1,35 @@
+<br>
+.text-center
+  %h1 Backups
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
+
+.container.mx-auto.my-5.p-3.bg-light
+  = form_tag('/backups/', method: :post) do
+    %button#do_backup.btn.btn-primary{type: "submit"}
+      Hacer backup
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %table.table.table-striped.table-bordered
+              %thead.thead-dark
+                %tr
+                  %th Fecha
+                  %th.text-center Eliminar
+                %tbody
+                  - @backups.each do |backup|
+                    %tr
+                      %td= format_backup_filename(backup)
+                      %td.text-center
+                        = form_tag('/backups/delete', method: :delete) do
+                          = hidden_field_tag 'backup_id', backup
+                          %button#delete_backup.btn{type: "submit"}
+                            %i.fa.fa-times.text-danger

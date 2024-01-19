@@ -13,6 +13,8 @@
           %a.nav-link{href: "/suppliers/"} Proveedores
         %li.nav-item
           %a.nav-link{href: "/budgets/"} Presupuestos
+        %li.nav-item
+          %a.nav-link{href: "/backups/"} Backups
 
       - if user_signed_in?
         = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger my-2 my-sm-0'

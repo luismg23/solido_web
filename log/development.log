@@ -1,407 +1,523 @@
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:41:35 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-DEPRECATION WARNING: Rails 7.0 has deprecated Enumerable.sum in favor of Ruby's native implementation available since 2.4. Sum of non-numeric elements requires an initial argument. (called from budget_amount_available at /Users/luismg/Desktop/Git/solido_web/app/controllers/budgets_controller.rb:74)
- el amount es 0
+Started GET "/backups/delete" for 127.0.0.1 at 2024-01-18 20:04:44 -0600
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BackupsController):
+  
+actionpack (7.0.8) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.8) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.8) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.8) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.8) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.8) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.8) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.8) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.8) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.8) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.8) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.8) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.8) lib/active_record/migration.rb:638:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/backups/" for 127.0.0.1 at 2024-01-18 20:04:45 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 4.6ms | Allocations: 969)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 4.7ms | Allocations: 1032)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.4ms | Allocations: 6001)
-  Rendered budgets/_create_check.html.haml (Duration: 2.5ms | Allocations: 6064)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 120)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 8.1ms | Allocations: 8256)
-  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 77)
-  Rendered layouts/_application_header.html.haml (Duration: 1.6ms | Allocations: 3577)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.2ms | Allocations: 1192)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 106)
+  Rendered layouts/_application_header.html.haml (Duration: 4.6ms | Allocations: 3614)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 9.9ms | Allocations: 12032)
-Completed 200 OK in 52ms (Views: 10.5ms | ActiveRecord: 0.0ms | Allocations: 39208)
+  Rendered layout layouts/application.html.haml (Duration: 6.3ms | Allocations: 5006)
+Completed 200 OK in 24ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 10512)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:42:06 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-los valores son [{"cve_renglon_presupuestal"=>1, "nombre_renglon_presupuestal"=>"GANADO", "monto_presupuestado"=>20000.0, "monto_erogado"=>0.0, "monto_por_erogar"=>20000.0, "IdInterno"=>56478, "IdInternoPresupuesto"=>4080}]
-DEPRECATION WARNING: Rails 7.0 has deprecated Enumerable.sum in favor of Ruby's native implementation available since 2.4. Sum of non-numeric elements requires an initial argument. (called from budget_amount_available at /Users/luismg/Desktop/Git/solido_web/app/controllers/budgets_controller.rb:75)
- el amount es 0
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:04:46 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118153837.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms | Allocations: 1125)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:04:46 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.7ms | Allocations: 979)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 1042)
-  Rendered budgets/_create_check_form.html.haml (Duration: 1.8ms | Allocations: 5995)
-  Rendered budgets/_create_check.html.haml (Duration: 1.9ms | Allocations: 6058)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 120)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 3.4ms | Allocations: 8272)
-  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 77)
-  Rendered layouts/_application_header.html.haml (Duration: 1.4ms | Allocations: 3577)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.8ms | Allocations: 897)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 4.9ms | Allocations: 12048)
-Completed 200 OK in 45ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 39267)
+  Rendered layout layouts/application.html.haml (Duration: 1.8ms | Allocations: 2005)
+Completed 200 OK in 10ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 3095)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:42:37 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-los valores son [{"cve_renglon_presupuestal"=>1, "nombre_renglon_presupuestal"=>"GANADO", "monto_presupuestado"=>20000.0, "monto_erogado"=>0.0, "monto_por_erogar"=>20000.0, "IdInterno"=>56478, "IdInternoPresupuesto"=>4080}]
- el amount es 20000.0
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:04:47 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118153838.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms | Allocations: 1110)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:04:47 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.6ms | Allocations: 967)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 1030)
-  Rendered budgets/_create_check_form.html.haml (Duration: 1.8ms | Allocations: 5995)
-  Rendered budgets/_create_check.html.haml (Duration: 1.8ms | Allocations: 6058)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 120)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 3.3ms | Allocations: 8251)
-  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 77)
-  Rendered layouts/_application_header.html.haml (Duration: 1.3ms | Allocations: 3572)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.8ms | Allocations: 632)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.8ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 4.8ms | Allocations: 12022)
-Completed 200 OK in 44ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 39111)
+  Rendered layout layouts/application.html.haml (Duration: 1.9ms | Allocations: 1740)
+Completed 200 OK in 10ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 2831)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:43:19 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-Completed 500 Internal Server Error in 41ms (ActiveRecord: 0.0ms | Allocations: 27787)
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:04:48 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118155212.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 15ms (ActiveRecord: 0.0ms | Allocations: 1102)
 
 
-  
-NoMethodError (undefined method `monto_presupuestado' for {"cve_presupuesto"=>1, "anio_presupuesto"=>2024, "nombre_presupuesto"=>"AirBNB", "monto_presupuestado"=>30050.0, "monto_erogado"=>0.0, "monto_por_erogar"=>30050.0, "IdInterno"=>4080, "empresaid"=>1}:Hash):
-  
-app/controllers/budgets_controller.rb:75:in `budget_amount_available'
-app/controllers/budgets_controller.rb:53:in `details'
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:43:36 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms | Allocations: 27183)
-
-
-  
-NoMethodError (undefined method `-' for nil:NilClass):
-  
-app/controllers/budgets_controller.rb:75:in `budget_amount_available'
-app/controllers/budgets_controller.rb:53:in `details'
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:44:06 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms | Allocations: 27182)
-
-
-  
-NoMethodError (undefined method `-' for nil:NilClass):
-  
-app/controllers/budgets_controller.rb:75:in `budget_amount_available'
-app/controllers/budgets_controller.rb:53:in `details'
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:44:20 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
-Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.0ms | Allocations: 27804)
-
-
-  
-NoMethodError (undefined method `monto_presupuestado' for {"cve_presupuesto"=>1, "anio_presupuesto"=>2024, "nombre_presupuesto"=>"AirBNB", "monto_presupuestado"=>30050.0, "monto_erogado"=>0.0, "monto_por_erogar"=>30050.0, "IdInterno"=>4080, "empresaid"=>1}:Hash):
-  
-app/controllers/budgets_controller.rb:75:in `budget_amount_available'
-app/controllers/budgets_controller.rb:53:in `details'
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:44:42 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:04:48 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.9ms | Allocations: 985)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 1.0ms | Allocations: 1048)
-  Rendered budgets/_create_check_form.html.haml (Duration: 1.9ms | Allocations: 6011)
-  Rendered budgets/_create_check.html.haml (Duration: 2.0ms | Allocations: 6074)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 120)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 4.0ms | Allocations: 8281)
-  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 77)
-  Rendered layouts/_application_header.html.haml (Duration: 1.4ms | Allocations: 3577)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.5ms | Allocations: 345)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.3ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 5.6ms | Allocations: 12057)
-Completed 200 OK in 47ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 39143)
+  Rendered layout layouts/application.html.haml (Duration: 2.4ms | Allocations: 1453)
+Completed 200 OK in 9ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 2540)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:37 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 20000.0
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:05:14 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.6ms | Allocations: 967)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 1030)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.0ms | Allocations: 5995)
-  Rendered budgets/_create_check.html.haml (Duration: 2.0ms | Allocations: 6058)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 120)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 3.7ms | Allocations: 8257)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 77)
-  Rendered layouts/_application_header.html.haml (Duration: 3.9ms | Allocations: 3572)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.7ms | Allocations: 337)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.9ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 7.9ms | Allocations: 12028)
-Completed 200 OK in 50ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 39088)
+  Rendered layout layouts/application.html.haml (Duration: 1.9ms | Allocations: 1445)
+Completed 200 OK in 13ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 2532)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:38 -0600
+Started POST "/backups/" for 127.0.0.1 at 2024-01-18 20:05:15 -0600
+Processing by BackupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 488ms (ActiveRecord: 0.0ms | Allocations: 1111)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:05:16 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.7ms | Allocations: 630)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.8ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 1.8ms | Allocations: 1738)
+Completed 200 OK in 10ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 2827)
+
+
+Started POST "/backups/" for 127.0.0.1 at 2024-01-18 20:05:19 -0600
+Processing by BackupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 395ms (ActiveRecord: 0.0ms | Allocations: 1120)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:05:19 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.9ms | Allocations: 899)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.0ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 2.2ms | Allocations: 2007)
+Completed 200 OK in 11ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 3097)
+
+
+Started POST "/backups/" for 127.0.0.1 at 2024-01-18 20:05:20 -0600
+Processing by BackupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 381ms (ActiveRecord: 0.0ms | Allocations: 1114)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:05:21 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.1ms | Allocations: 1190)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.9ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 2.3ms | Allocations: 2298)
+Completed 200 OK in 13ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 3389)
+
+
+Started POST "/backups/" for 127.0.0.1 at 2024-01-18 20:05:22 -0600
+Processing by BackupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 424ms (ActiveRecord: 0.0ms | Allocations: 1120)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:05:22 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 1447)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.8ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 2.6ms | Allocations: 2555)
+Completed 200 OK in 10ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3647)
+
+
+Started GET "/budgets/" for 127.0.0.1 at 2024-01-18 20:06:05 -0600
+Processing by BudgetsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/index.html.haml within layouts/application
+  Rendered budgets/_create_budget_form.html.haml (Duration: 9.5ms | Allocations: 11445)
+  Rendered budgets/_create_budget.html.haml (Duration: 15.4ms | Allocations: 20530)
+  Rendered budgets/index.html.haml within layouts/application (Duration: 39.8ms | Allocations: 51891)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 75)
+  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 966)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 41.0ms | Allocations: 53056)
+Completed 200 OK in 181ms (Views: 42.1ms | ActiveRecord: 0.0ms | Allocations: 82402)
+
+
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-18 20:06:29 -0600
 Processing by BudgetsController#details as HTML
   Parameters: {"id"=>"4080"}
- el amount es 20000.0
   Rendering layout layouts/application.html.haml
   Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 1.7ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 1.8ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 7.5ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 7.6ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 11.4ms | Allocations: 7996)
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 5.5ms | Allocations: 7639)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 10.9ms | Allocations: 16774)
+  Rendered budgets/_create_check_form.html.haml (Duration: 11.0ms | Allocations: 18555)
+  Rendered budgets/_create_check.html.haml (Duration: 16.8ms | Allocations: 27806)
+  Rendered budgets/_pending.html.haml (Duration: 11.1ms | Allocations: 13012)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 60.2ms | Allocations: 92930)
   Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 2.4ms | Allocations: 890)
+  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 890)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 14.7ms | Allocations: 9081)
-Completed 200 OK in 89ms (Views: 15.0ms | ActiveRecord: 0.0ms | Allocations: 15851)
+  Rendered layout layouts/application.html.haml (Duration: 61.2ms | Allocations: 94015)
+Completed 200 OK in 135ms (Views: 61.7ms | ActiveRecord: 0.0ms | Allocations: 112874)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:40 -0600
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-18 20:07:05 -0600
 Processing by BudgetsController#details as HTML
   Parameters: {"id"=>"4080"}
- el amount es 20000.0
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/details.html.haml within layouts/application
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.9ms | Allocations: 839)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 1.0ms | Allocations: 901)
+  Rendered budgets/_create_check_form.html.haml (Duration: 3.2ms | Allocations: 5916)
+  Rendered budgets/_create_check.html.haml (Duration: 3.3ms | Allocations: 5978)
+  Rendered budgets/_pending.html.haml (Duration: 0.2ms | Allocations: 200)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 6.5ms | Allocations: 8839)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
+  Rendered layouts/_application_header.html.haml (Duration: 0.9ms | Allocations: 890)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 7.7ms | Allocations: 9924)
+Completed 200 OK in 71ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 16752)
+
+
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-18 20:07:07 -0600
+Processing by BudgetsController#details as HTML
+  Parameters: {"id"=>"4080"}
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/details.html.haml within layouts/application
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.9ms | Allocations: 833)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 1.0ms | Allocations: 895)
+  Rendered budgets/_create_check_form.html.haml (Duration: 3.1ms | Allocations: 5910)
+  Rendered budgets/_create_check.html.haml (Duration: 3.3ms | Allocations: 5972)
+  Rendered budgets/_pending.html.haml (Duration: 0.2ms | Allocations: 200)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 6.5ms | Allocations: 8829)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
+  Rendered layouts/_application_header.html.haml (Duration: 0.9ms | Allocations: 890)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 7.8ms | Allocations: 9914)
+Completed 200 OK in 72ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 16710)
+
+
+Started GET "/budgets/ganado/details" for 127.0.0.1 at 2024-01-18 20:08:34 -0600
+Processing by BudgetsController#details as HTML
+  Parameters: {"id"=>"ganado"}
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 0.0ms | Allocations: 4313)
+
+
+  
+NoMethodError (undefined method `-' for nil:NilClass):
+  
+app/controllers/budgets_controller.rb:75:in `budget_amount_available'
+app/controllers/budgets_controller.rb:53:in `details'
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-18 20:11:33 -0600
+Processing by BudgetsController#details as HTML
+  Parameters: {"id"=>"4080"}
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/details.html.haml within layouts/application
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.6ms | Allocations: 833)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 895)
+  Rendered budgets/_create_check_form.html.haml (Duration: 3.4ms | Allocations: 5910)
+  Rendered budgets/_create_check.html.haml (Duration: 3.5ms | Allocations: 5972)
+  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 200)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 5.4ms | Allocations: 8833)
+  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 68)
+  Rendered layouts/_application_header.html.haml (Duration: 0.6ms | Allocations: 890)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 6.2ms | Allocations: 9918)
+Completed 200 OK in 190ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 16730)
+
+
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-18 20:11:34 -0600
+Processing by BudgetsController#details as HTML
+  Parameters: {"id"=>"4080"}
   Rendering layout layouts/application.html.haml
   Rendering budgets/details.html.haml within layouts/application
   Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.8ms | Allocations: 839)
   Rendered budgets/_create_budgetline.html.haml (Duration: 0.9ms | Allocations: 901)
-  Rendered budgets/_create_check_form.html.haml (Duration: 3.7ms | Allocations: 5915)
-  Rendered budgets/_create_check.html.haml (Duration: 3.8ms | Allocations: 5977)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 6.1ms | Allocations: 8012)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 890)
-  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 7.1ms | Allocations: 9097)
-Completed 200 OK in 61ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 15883)
-
-
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:57 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
-  Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.6ms | Allocations: 967)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 1030)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.0ms | Allocations: 5995)
-  Rendered budgets/_create_check.html.haml (Duration: 2.1ms | Allocations: 6058)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 120)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 3.8ms | Allocations: 8251)
-  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 77)
-  Rendered layouts/_application_header.html.haml (Duration: 1.4ms | Allocations: 3572)
-  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 5.4ms | Allocations: 12022)
-Completed 200 OK in 50ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 39088)
-
-
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:58 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
-  Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.8ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.9ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.8ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 2.8ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.2ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 4.9ms | Allocations: 8004)
+  Rendered budgets/_create_check_form.html.haml (Duration: 2.9ms | Allocations: 5915)
+  Rendered budgets/_create_check.html.haml (Duration: 3.0ms | Allocations: 5977)
+  Rendered budgets/_pending.html.haml (Duration: 0.2ms | Allocations: 200)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 5.5ms | Allocations: 8844)
   Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
   Rendered layouts/_application_header.html.haml (Duration: 0.6ms | Allocations: 890)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 5.7ms | Allocations: 9089)
-Completed 200 OK in 78ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 15859)
+  Rendered layout layouts/application.html.haml (Duration: 6.3ms | Allocations: 9929)
+Completed 200 OK in 75ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 16772)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:59 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
+Started GET "/backups/" for 127.0.0.1 at 2024-01-18 20:11:36 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.8ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 1.0ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 3.4ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 3.5ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 5.9ms | Allocations: 8006)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.6ms | Allocations: 890)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 2.4ms | Allocations: 1437)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.1ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 6.7ms | Allocations: 9091)
-Completed 200 OK in 85ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 15862)
+  Rendered layout layouts/application.html.haml (Duration: 4.4ms | Allocations: 2545)
+Completed 200 OK in 26ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3639)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:45:59 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
+Started GET "/backups/" for 127.0.0.1 at 2024-01-18 20:11:37 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.7ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.8ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.9ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 3.0ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 4.9ms | Allocations: 8006)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 890)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 2.5ms | Allocations: 1429)
+  Rendered layouts/_navbar.html.haml (Duration: 0.3ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.5ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 5.9ms | Allocations: 9091)
-Completed 200 OK in 71ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 15861)
+  Rendered layout layouts/application.html.haml (Duration: 4.5ms | Allocations: 2537)
+Completed 200 OK in 23ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3629)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:46:00 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:11:38 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118200515.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 21ms (ActiveRecord: 0.0ms | Allocations: 1101)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:11:38 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.7ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.8ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 3.3ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 3.4ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 5.3ms | Allocations: 7990)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 890)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 1174)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.1ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 6.2ms | Allocations: 9075)
-Completed 200 OK in 76ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 15845)
+  Rendered layout layouts/application.html.haml (Duration: 2.8ms | Allocations: 2282)
+Completed 200 OK in 13ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 3373)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:46:34 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:11:38 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118200519.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 20ms (ActiveRecord: 0.0ms | Allocations: 1100)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:11:38 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 3.4ms | Allocations: 7485)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 7.7ms | Allocations: 16627)
-  Rendered budgets/_create_check_form.html.haml (Duration: 6.5ms | Allocations: 18104)
-  Rendered budgets/_create_check.html.haml (Duration: 10.2ms | Allocations: 27350)
-  Rendered budgets/_pending.html.haml (Duration: 4.6ms | Allocations: 12922)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 46.3ms | Allocations: 96159)
-  Rendered layout layouts/application.html.haml (Duration: 46.4ms | Allocations: 96231)
-Completed 500 Internal Server Error in 126ms (ActiveRecord: 0.0ms | Allocations: 103809)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `budgetline' for #<ActionView::Base:0x000000000a8a48>
-Did you mean?  @budgetline
-               @budgetlines):
-    74:       %tr
-    75:         %td= @budgetlines.size
-    76:         %td= link_to "#{@pending.size} movimientos", "#", id: "link_to_pendingModal"
-    77:         %td{class: numeric_class(budgetline["monto_por_erogar"])}
-    78:           = number_to_currency(budgetline["monto_por_erogar"])
-    79: 
-    80: .container
-  
-app/views/budgets/details.html.haml:77
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:47:07 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
-  Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 3.5ms | Allocations: 7503)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 7.6ms | Allocations: 16645)
-  Rendered budgets/_create_check_form.html.haml (Duration: 6.4ms | Allocations: 18120)
-  Rendered budgets/_create_check.html.haml (Duration: 10.3ms | Allocations: 27369)
-  Rendered budgets/_pending.html.haml (Duration: 4.5ms | Allocations: 12922)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 39.6ms | Allocations: 91647)
-  Rendered layouts/_navbar.html.haml (Duration: 4.6ms | Allocations: 11234)
-  Rendered layouts/_application_header.html.haml (Duration: 7.0ms | Allocations: 17026)
-  Rendered layouts/_application_footer.html.haml (Duration: 0.8ms | Allocations: 1685)
-  Rendered layout layouts/application.html.haml (Duration: 49.1ms | Allocations: 113512)
-Completed 200 OK in 129ms (Views: 50.9ms | ActiveRecord: 0.0ms | Allocations: 121114)
-
-
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:47:27 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 10050.0
-  Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.7ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.8ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 3.0ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 3.1ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 5.1ms | Allocations: 8103)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.6ms | Allocations: 890)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 899)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 6.0ms | Allocations: 9188)
-Completed 200 OK in 81ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 15976)
+  Rendered layout layouts/application.html.haml (Duration: 2.5ms | Allocations: 2007)
+Completed 200 OK in 12ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3097)
 
 
-Started POST "/budgetlines" for 127.0.0.1 at 2024-01-16 11:47:38 -0600
-Processing by BudgetlinesController#create as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "budgetline"=>{"IdInternoPresupuesto"=>"4080", "cve_renglon_presupuestal"=>"2", "nombre_renglon_presupuestal"=>"probando", "monto_presupuestado"=>"1000"}, "commit"=>"Guardar"}
-Redirected to http://127.0.0.1:3001/budgets/4080/details
-Completed 302 Found in 20ms (ActiveRecord: 0.0ms | Allocations: 1268)
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:11:39 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118200521.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 19ms (ActiveRecord: 0.0ms | Allocations: 1098)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:47:38 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 9050.0
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:11:39 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.9ms | Allocations: 834)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 1.1ms | Allocations: 896)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.8ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 2.9ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 5.8ms | Allocations: 8457)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.6ms | Allocations: 890)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 612)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.2ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 6.6ms | Allocations: 9542)
-Completed 200 OK in 60ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 16321)
+  Rendered layout layouts/application.html.haml (Duration: 3.0ms | Allocations: 1720)
+Completed 200 OK in 13ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2809)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:47:58 -0600
-Processing by BudgetsController#details as HTML
-  Parameters: {"id"=>"4080"}
- el amount es 9050.0
+Started DELETE "/backups/delete" for 127.0.0.1 at 2024-01-18 20:11:39 -0600
+Processing by BackupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "backup_id"=>"backups/backup_20240118200522.sql", "id"=>"delete"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 19ms (ActiveRecord: 0.0ms | Allocations: 1100)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:11:39 -0600
+Processing by BackupsController#index as HTML
   Rendering layout layouts/application.html.haml
-  Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.7ms | Allocations: 833)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 1.0ms | Allocations: 895)
-  Rendered budgets/_create_check_form.html.haml (Duration: 3.1ms | Allocations: 5909)
-  Rendered budgets/_create_check.html.haml (Duration: 3.1ms | Allocations: 5971)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 5.5ms | Allocations: 8434)
-  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
-  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 890)
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.7ms | Allocations: 367)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.9ms | Allocations: 913)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 6.4ms | Allocations: 9519)
-Completed 200 OK in 73ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 16298)
+  Rendered layout layouts/application.html.haml (Duration: 1.8ms | Allocations: 1475)
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 2562)
 
 
-Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-16 11:48:56 -0600
+Started POST "/backups/" for 127.0.0.1 at 2024-01-18 20:11:40 -0600
+Processing by BackupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3001/backups
+Completed 302 Found in 358ms (ActiveRecord: 0.0ms | Allocations: 1113)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:11:40 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.4ms | Allocations: 626)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.5ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 1.2ms | Allocations: 1734)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 2823)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:11:42 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 604)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.3ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 3.1ms | Allocations: 1712)
+Completed 200 OK in 21ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2817)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:12:21 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 610)
+  Rendered layouts/_navbar.html.haml (Duration: 0.2ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 1.3ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 3.1ms | Allocations: 1718)
+Completed 200 OK in 20ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2823)
+
+
+Started GET "/backups" for 127.0.0.1 at 2024-01-18 20:13:02 -0600
+Processing by BackupsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering backups/index.html.haml within layouts/application
+  Rendered backups/index.html.haml within layouts/application (Duration: 0.7ms | Allocations: 612)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 83)
+  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 913)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 1.6ms | Allocations: 1720)
+Completed 200 OK in 12ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 2825)
+
+
+Started GET "/budgets/" for 127.0.0.1 at 2024-01-18 20:13:02 -0600
+Processing by BudgetsController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/index.html.haml within layouts/application
+  Rendered budgets/_create_budget_form.html.haml (Duration: 0.9ms | Allocations: 1295)
+  Rendered budgets/_create_budget.html.haml (Duration: 1.0ms | Allocations: 1357)
+  Rendered budgets/index.html.haml within layouts/application (Duration: 1.9ms | Allocations: 2269)
+  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 68)
+  Rendered layouts/_application_header.html.haml (Duration: 0.5ms | Allocations: 889)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 2.7ms | Allocations: 3353)
+Completed 200 OK in 119ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 16285)
+
+
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-18 20:13:03 -0600
 Processing by BudgetsController#details as HTML
   Parameters: {"id"=>"4080"}
- el amount es 9050.0
   Rendering layout layouts/application.html.haml
   Rendering budgets/details.html.haml within layouts/application
-  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.6ms | Allocations: 839)
-  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 901)
-  Rendered budgets/_create_check_form.html.haml (Duration: 2.7ms | Allocations: 5915)
-  Rendered budgets/_create_check.html.haml (Duration: 2.7ms | Allocations: 5977)
-  Rendered budgets/_pending.html.haml (Duration: 0.1ms | Allocations: 107)
-  Rendered budgets/details.html.haml within layouts/application (Duration: 4.8ms | Allocations: 8448)
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 0.6ms | Allocations: 845)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 0.7ms | Allocations: 907)
+  Rendered budgets/_create_check_form.html.haml (Duration: 2.7ms | Allocations: 5921)
+  Rendered budgets/_create_check.html.haml (Duration: 2.7ms | Allocations: 5983)
+  Rendered budgets/_pending.html.haml (Duration: 0.2ms | Allocations: 200)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 5.0ms | Allocations: 8858)
   Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 68)
   Rendered layouts/_application_header.html.haml (Duration: 0.5ms | Allocations: 890)
   Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
-  Rendered layout layouts/application.html.haml (Duration: 5.6ms | Allocations: 9533)
-Completed 200 OK in 78ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 16328)
+  Rendered layout layouts/application.html.haml (Duration: 5.7ms | Allocations: 9943)
+Completed 200 OK in 81ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 16741)
 
 
