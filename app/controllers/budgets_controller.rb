@@ -51,7 +51,6 @@ class BudgetsController < ApplicationController
       @suppliers = Supplier.by_company_id(@budget["empresaid"])
       @pending = Check.pending(params[:id])
       @amount_available = budget_amount_available
-      Rails.logger.info " el amount es #{@amount_available}"
     end
 
   private
