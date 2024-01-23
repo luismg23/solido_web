@@ -18,7 +18,6 @@ class Bank
   def self.all(page = 1, per_page = 10)
     response = get("/banks/all/")
     response.parsed_response
-    @request_.all
   end
 
   def self.by_id(id)
