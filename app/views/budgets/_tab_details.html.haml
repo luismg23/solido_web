@@ -1,0 +1,18 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Concepto
+      %th Total
+      %th Ver
+      %th Aprobar
+  %tbody
+    - @pending.each do |cheque|
+      %tr
+        %td= cheque["concepto_cheque"]
+        %td= cheque["Total"]
+        %td
+          = link_to details_budget_path(cheque["concepto_cheque"]), class: 'text-success icon-spacing' do
+            %i.fa.fa-eye
+        %td.text-center
+          = link_to details_budget_path(cheque["concepto_cheque"]), class: 'text-success' do
+            %i.fa.fa-check

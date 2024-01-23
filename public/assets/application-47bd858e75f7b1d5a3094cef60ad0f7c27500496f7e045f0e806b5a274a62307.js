@@ -15,4 +15,4 @@ import "./actions"
 import "./budgets"
 import "./checks"
 import "./pendings"
-import "./details"
+import "./details";

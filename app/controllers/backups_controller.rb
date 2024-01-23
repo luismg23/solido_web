@@ -6,12 +6,14 @@ class BackupsController < ApplicationController
 
     def create
         generate_backup
-        redirect_to backups_path, notice: 'Respaldo completado correctamente'
+        flash[:success] = 'Respaldo completado correctamente'
+        redirect_to backups_path
     end
 
     def destroy
         delete_backup(params['backup_id'])
-        redirect_to backups_path, notice: 'Respaldo eliminado'
+        flash[:success] = 'Respaldo eliminado correctamente'
+        redirect_to backups_path
     end
 
     def format_backup_filename(filename)

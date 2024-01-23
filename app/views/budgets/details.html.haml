@@ -10,8 +10,9 @@
 
 = render partial: 'create_budgetline'
 = render partial: 'create_check'
+= render partial: 'create_detail'
 = render partial: 'pending'
-
+= render partial: 'view_checks'
 
 .container.mx-auto.my-5.p-3.bg-light
   %label
@@ -20,7 +21,8 @@
 
     %button#budget_create_check.btn.btn-primary{type: "button"} + Cheque
 
-    %button#loadButton.btn.btn-primary{type: "button"} + Detalle
+    %button#budget_create_detail.btn.btn-primary{type: "button"} + Detalle
+
 
 
 .container.mx-auto.my-5.p-3.bg-light
@@ -105,3 +107,30 @@
                     = number_to_currency(budgetline["monto_erogado"])
                   %td{class: numeric_class(budgetline["monto_por_erogar"])}
                     = number_to_currency(budgetline["monto_por_erogar"])
+
+<br>
+<br>
+<br>
+.text-center
+  %h1 Cheques y Movimientos
+
+.container
+  .row
+    .col-xs-12
+      %ul.nav.nav-tabs
+        %li.nav-item
+          = link_to 'Cheques', '#tab1', class: 'nav-link active', data: { toggle: 'tab' }
+        %li.nav-item
+          = link_to 'Movimientos', '#tab2', class: 'nav-link', data: { toggle: 'tab' }
+
+      .tab-content
+        .tab-pane.fade.show.active#tab1
+          = render partial: 'tab_checks'
+        .tab-pane.fade#tab2
+          = render partial: 'tab_details'
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
