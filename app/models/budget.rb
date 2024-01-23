@@ -16,8 +16,8 @@ class Budget
     end
   
     def self.all(page = 1, per_page = 10)
-      @request_ = RequestHandler.new('budgets')
-      @request_.all
+      response = get("/budgets/all")
+      response.parsed_response  
     end
   
     def self.unique_years()
