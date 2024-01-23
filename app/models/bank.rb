@@ -16,7 +16,8 @@ class Bank
   end
 
   def self.all(page = 1, per_page = 10)
-    @request_ = RequestHandler.new('banks')
+    response = get("/banks/all/")
+    response.parsed_response
     @request_.all
   end
 
