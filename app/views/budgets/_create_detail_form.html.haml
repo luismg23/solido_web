@@ -1,0 +1,16 @@
+= form_for detail, html: { class: "form" } do |f|
+  .form-group.mb-3
+    %strong= f.label :Cheque
+    = f.select :IdInternoCheque, pending_checks.map{ |pending_check| [pending_check["concepto_cheque"], pending_check["IdInterno"]] }, {}, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Renglón
+    = f.select :IdInternoRenglon, available_budgetlines.map{ |available_budgetline| [available_budgetline["nombre_renglon_presupuestal"], available_budgetline["IdInterno"]] }, {}, class: "form-control"
+
+  .form-group.mb-3
+    = f.label :importe_renglon, "Importe", class: "form-label"
+    = f.text_field :importe_renglon, class: "form-control"
+
+
+  .actions.d-flex.justify-content-end
+    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: false

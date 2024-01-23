@@ -1,0 +1,11 @@
+.modal.fade#modalDetail{ tabindex: "-1", role: "dialog", aria: { labelledby: "exampleModalLabel", modal: true } }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %h5.modal-title Crear Detalle de Cheque
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" }, aria: { label: "Close" } }
+          %span{ aria: { hidden: "true" } } &times;
+      .modal-body
+        = render 'budgets/create_detail_form', detail: @detail, available_budgetlines: @available_budgetlines, pending_checks: @pending_checks
+      .modal-footer
+        %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" } } Cerrar

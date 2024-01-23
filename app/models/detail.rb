@@ -1,20 +1,14 @@
-class Check
+class Detail
     include HTTParty
     base_uri 'http://127.0.0.1:3000'
     include ActiveModel::Model
-    attr_accessor :fecha_emision_cheque, :concepto_cheque, :estatus_pago_cheque, :autorizado, :IdInterno, :IdInternoBanco, :num_cheque, :IdInternoPresupuesto, :Total, :TransaccionType, :IdProveedorFK
-  
+    attr_accessor :importe_renglon, :IdInterno, :IdInternoCheque, :IdInternoRenglon
+
     def initialize(attributes = {})
-      @fecha_emision_cheque = attributes[:fecha_emision_cheque]
-      @concepto_cheque = attributes[:concepto_cheque]
-      @estatus_pago_cheque = attributes[:estatus_pago_cheque]
-      @autorizado = attributes[:autorizado]
-      @IdInterno = attributes[:IdInterno]  
-      @IdInternoBanco = attributes[:IdInternoBanco]  
-      @IdInternoPresupuesto = attributes[:IdInternoPresupuesto]  
-      @Total = attributes[:Total]  
-      @TransaccionType = attributes[:TransaccionType]  
-      @IdProveedorFK = attributes[:IdProveedorFK]  
+      @importe_renglon = attributes[:importe_renglon]
+      @IdInterno = attributes[:IdInterno]
+      @IdInternoCheque = attributes[:IdInternoCheque]
+      @IdInternoRenglon = attributes[:IdInternoRenglon]
     end
   
     def self.all(page = 1, per_page = 10)
@@ -33,7 +27,7 @@ class Check
     end
   
     def self.by_budget_id(id)
-      response = get("/checks/by_budget_id/#{id}")
+      response = get("/budgetlines/by_budget_id/#{id}")
       response.parsed_response
     end
 
@@ -44,7 +38,7 @@ class Check
   
     def self.create(data)
       response = HTTParty.post(
-        "#{base_uri}/checks/",
+        "#{base_uri}/details/",
         body: data.to_json,
         headers: {
           'Content-Type' => 'application/json'

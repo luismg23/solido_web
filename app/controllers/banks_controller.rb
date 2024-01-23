@@ -8,7 +8,7 @@ class BanksController < ApplicationController
     @companies = Company.all
     @banks = Bank.all
     @searched = false
-    Rails.logger.info "el current user es en bancos #{current_user}"
+
     if params[:search].present?
       search_term = params[:search].downcase
       @banks = @banks.select { |bank| bank["nombre_banco"].downcase.include?(search_term) }

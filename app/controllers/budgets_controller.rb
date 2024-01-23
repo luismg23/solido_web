@@ -43,6 +43,7 @@ class BudgetsController < ApplicationController
     def details  
       @budgetline = Budgetline.new
       @check = Check.new
+      @detail = Detail.new
       @payment_methods = PAYMENT_METHODS
 
       @budget = Budget.by_id(params[:id])
@@ -51,6 +52,14 @@ class BudgetsController < ApplicationController
       @suppliers = Supplier.by_company_id(@budget["empresaid"])
       @pending = Check.pending(params[:id])
       @amount_available = budget_amount_available
+
+
+      @checks = Check.by_budget_id(params[:id])
+
+      @available_budgetlines = Budgetline.by_budget_id(params[:id])
+      @pending_checks = Check.by_budget_id(params[:id])
+      Rails.logger.info "los reng son #{@available_budgetlines.inspect}"
+
     end
 
   private
