@@ -38,7 +38,7 @@ class Detail
   
     def self.create(data)
       response = HTTParty.post(
-        "#{base_uri}/details/",
+        "#{base_uri}/checkdetails/",
         body: data.to_json,
         headers: {
           'Content-Type' => 'application/json'
