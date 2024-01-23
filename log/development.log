@@ -3860,3 +3860,114 @@ los reng son [{"monto_erogado"=>347.0, "monto_por_erogar"=>19653.0, "cve_renglon
 Completed 200 OK in 121ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 20916)
 
 
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-23 07:38:48 -0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by BudgetsController#details as HTML
+  Parameters: {"id"=>"4080"}
+los reng son [{"monto_erogado"=>347.0, "monto_por_erogar"=>19653.0, "cve_renglon_presupuestal"=>1, "nombre_renglon_presupuestal"=>"GANADO", "monto_presupuestado"=>20000.0, "IdInterno"=>56478, "IdInternoPresupuesto"=>4080}, {"monto_erogado"=>751.25, "monto_por_erogar"=>248.75, "cve_renglon_presupuestal"=>2, "nombre_renglon_presupuestal"=>"probando", "monto_presupuestado"=>1000.0, "IdInterno"=>56479, "IdInternoPresupuesto"=>4080}, {"monto_erogado"=>0.0, "monto_por_erogar"=>100.0, "cve_renglon_presupuestal"=>3, "nombre_renglon_presupuestal"=>"demo", "monto_presupuestado"=>100.0, "IdInterno"=>56480, "IdInternoPresupuesto"=>4080}]
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/details.html.haml within layouts/application
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 5.1ms | Allocations: 8410)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 9.5ms | Allocations: 17591)
+  Rendered budgets/_create_check_form.html.haml (Duration: 8.2ms | Allocations: 19076)
+  Rendered budgets/_create_check.html.haml (Duration: 11.4ms | Allocations: 28327)
+  Rendered budgets/_create_detail_form.html.haml (Duration: 3.0ms | Allocations: 8276)
+  Rendered budgets/_create_detail.html.haml (Duration: 6.2ms | Allocations: 17401)
+  Rendered budgets/_pending.html.haml (Duration: 3.8ms | Allocations: 12951)
+  Rendered budgets/_view_checks_data.html.haml (Duration: 1.9ms | Allocations: 5952)
+  Rendered budgets/_view_checks.html.haml (Duration: 5.0ms | Allocations: 14890)
+  Rendered budgets/_tab_checks.html.haml (Duration: 1.9ms | Allocations: 5904)
+  Rendered budgets/_tab_details.html.haml (Duration: 1.9ms | Allocations: 5904)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 102.0ms | Allocations: 163877)
+  Rendered layouts/_navbar.html.haml (Duration: 3.8ms | Allocations: 12230)
+  Rendered layouts/_application_header.html.haml (Duration: 7.3ms | Allocations: 20772)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.8ms | Allocations: 1685)
+  Rendered layout layouts/application.html.haml (Duration: 111.9ms | Allocations: 189522)
+Completed 200 OK in 261ms (Views: 114.2ms | ActiveRecord: 0.0ms | Allocations: 229762)
+
+
+Started GET "/banks" for 127.0.0.1 at 2024-01-23 07:46:35 -0600
+Processing by BanksController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering banks/index.html.haml within layouts/application
+  Rendered banks/_form.html.haml (Duration: 7.1ms | Allocations: 13841)
+  Rendered banks/_create.html.haml (Duration: 11.9ms | Allocations: 22845)
+  Rendered banks/_load.html.haml (Duration: 5.3ms | Allocations: 11043)
+  Rendered banks/index.html.haml within layouts/application (Duration: 36.1ms | Allocations: 71612)
+  Rendered layouts/_navbar.html.haml (Duration: 9.3ms | Allocations: 12201)
+  Rendered layouts/_application_header.html.haml (Duration: 11.8ms | Allocations: 17988)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.9ms | Allocations: 1688)
+  Rendered layout layouts/application.html.haml (Duration: 50.6ms | Allocations: 94443)
+Completed 200 OK in 84ms (Views: 51.6ms | ActiveRecord: 0.0ms | Allocations: 105910)
+
+
+Started GET "/banks" for 127.0.0.1 at 2024-01-23 07:52:23 -0600
+Processing by BanksController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering banks/index.html.haml within layouts/application
+  Rendered banks/_form.html.haml (Duration: 1.6ms | Allocations: 1994)
+  Rendered banks/_create.html.haml (Duration: 1.7ms | Allocations: 2056)
+  Rendered banks/_load.html.haml (Duration: 0.2ms | Allocations: 372)
+  Rendered banks/index.html.haml within layouts/application (Duration: 4.0ms | Allocations: 4501)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 70)
+  Rendered layouts/_application_header.html.haml (Duration: 0.7ms | Allocations: 891)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 4.9ms | Allocations: 5588)
+Completed 200 OK in 29ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 8365)
+
+
+Started GET "/banks" for 127.0.0.1 at 2024-01-23 08:15:30 -0600
+Processing by BanksController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering banks/index.html.haml within layouts/application
+  Rendered banks/_form.html.haml (Duration: 1.5ms | Allocations: 1989)
+  Rendered banks/_create.html.haml (Duration: 1.5ms | Allocations: 2051)
+  Rendered banks/_load.html.haml (Duration: 0.2ms | Allocations: 372)
+  Rendered banks/index.html.haml within layouts/application (Duration: 3.6ms | Allocations: 4494)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 70)
+  Rendered layouts/_application_header.html.haml (Duration: 1.0ms | Allocations: 891)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 4.9ms | Allocations: 5580)
+Completed 200 OK in 27ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 8337)
+
+
+Started GET "/banks" for 127.0.0.1 at 2024-01-23 08:18:53 -0600
+Processing by BanksController#index as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering banks/index.html.haml within layouts/application
+  Rendered banks/_form.html.haml (Duration: 1.7ms | Allocations: 1991)
+  Rendered banks/_create.html.haml (Duration: 1.8ms | Allocations: 2053)
+  Rendered banks/_load.html.haml (Duration: 0.3ms | Allocations: 372)
+  Rendered banks/index.html.haml within layouts/application (Duration: 3.9ms | Allocations: 4496)
+  Rendered layouts/_navbar.html.haml (Duration: 0.1ms | Allocations: 70)
+  Rendered layouts/_application_header.html.haml (Duration: 0.5ms | Allocations: 891)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 4.6ms | Allocations: 5582)
+Completed 200 OK in 28ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 8339)
+
+
+Started GET "/budgets/4080/details" for 127.0.0.1 at 2024-01-23 08:20:00 -0600
+Processing by BudgetsController#details as HTML
+  Parameters: {"id"=>"4080"}
+los reng son [{"monto_erogado"=>347.0, "monto_por_erogar"=>19653.0, "cve_renglon_presupuestal"=>1, "nombre_renglon_presupuestal"=>"GANADO", "monto_presupuestado"=>20000.0, "IdInterno"=>56478, "IdInternoPresupuesto"=>4080}, {"monto_erogado"=>751.25, "monto_por_erogar"=>248.75, "cve_renglon_presupuestal"=>2, "nombre_renglon_presupuestal"=>"probando", "monto_presupuestado"=>1000.0, "IdInterno"=>56479, "IdInternoPresupuesto"=>4080}, {"monto_erogado"=>0.0, "monto_por_erogar"=>100.0, "cve_renglon_presupuestal"=>3, "nombre_renglon_presupuestal"=>"demo", "monto_presupuestado"=>100.0, "IdInterno"=>56480, "IdInternoPresupuesto"=>4080}]
+  Rendering layout layouts/application.html.haml
+  Rendering budgets/details.html.haml within layouts/application
+  Rendered budgets/_create_budgetline_form.html.haml (Duration: 3.5ms | Allocations: 7503)
+  Rendered budgets/_create_budgetline.html.haml (Duration: 7.6ms | Allocations: 16648)
+  Rendered budgets/_create_check_form.html.haml (Duration: 12.0ms | Allocations: 18118)
+  Rendered budgets/_create_check.html.haml (Duration: 17.2ms | Allocations: 27366)
+  Rendered budgets/_create_detail_form.html.haml (Duration: 3.8ms | Allocations: 8120)
+  Rendered budgets/_create_detail.html.haml (Duration: 8.7ms | Allocations: 17240)
+  Rendered budgets/_pending.html.haml (Duration: 5.3ms | Allocations: 12922)
+  Rendered budgets/_view_checks_data.html.haml (Duration: 2.3ms | Allocations: 5949)
+  Rendered budgets/_view_checks.html.haml (Duration: 6.0ms | Allocations: 14884)
+  Rendered budgets/_tab_checks.html.haml (Duration: 2.4ms | Allocations: 5904)
+  Rendered budgets/_tab_details.html.haml (Duration: 2.1ms | Allocations: 5904)
+  Rendered budgets/details.html.haml within layouts/application (Duration: 68.5ms | Allocations: 151171)
+  Rendered layouts/_navbar.html.haml (Duration: 0.0ms | Allocations: 75)
+  Rendered layouts/_application_header.html.haml (Duration: 0.6ms | Allocations: 969)
+  Rendered layouts/_application_footer.html.haml (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.haml (Duration: 69.4ms | Allocations: 152338)
+Completed 200 OK in 169ms (Views: 70.6ms | ActiveRecord: 0.0ms | Allocations: 162117)
+
+
