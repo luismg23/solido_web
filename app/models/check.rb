@@ -1,6 +1,6 @@
 class Check
     include HTTParty
-    base_uri 'http://127.0.0.1:3000'
+    base_uri Rails.application.config.base_api
     include ActiveModel::Model
     attr_accessor :fecha_emision_cheque, :concepto_cheque, :estatus_pago_cheque, :autorizado, :IdInterno, :IdInternoBanco, :num_cheque, :IdInternoPresupuesto, :Total, :TransaccionType, :IdProveedorFK
   
