@@ -52,7 +52,7 @@
                 %th Presupuestado
                 %th Erogado
                 %th Por Erogar
-
+                %th Progreso
             %tbody
               %tr
                 %td= @budget["cve_presupuesto"]
@@ -64,6 +64,9 @@
                   = number_to_currency(@budget["monto_erogado"])
                 %td{class: numeric_class(@budget["monto_por_erogar"])}
                   = number_to_currency(@budget["monto_por_erogar"])
+                %td
+                  .progress
+                    .progress-bar{role: "progressbar", style: "width: #{(@budget["monto_erogado"] / @budget["monto_presupuestado"].to_f * 100).to_i}%", "aria-valuenow": (@budget["monto_erogado"] / @budget["monto_presupuestado"].to_f * 100).to_i, "aria-valuemin": 0, "aria-valuemax": 100}
 
 .container.mx-auto.my-5.p-3.bg-light
   %table.table.text-center
@@ -95,6 +98,7 @@
                 %th Presupuestado
                 %th Erogado
                 %th Por Erogar
+                %th Progreso
 
             %tbody
               - @budgetlines.each do |budgetline|
@@ -107,6 +111,9 @@
                     = number_to_currency(budgetline["monto_erogado"])
                   %td{class: numeric_class(budgetline["monto_por_erogar"])}
                     = number_to_currency(budgetline["monto_por_erogar"])
+                  %td
+                    .progress
+                      .progress-bar{role: "progressbar", style: "width: #{(budgetline["monto_erogado"] / budgetline["monto_presupuestado"].to_f * 100).to_i}%", "aria-valuenow": (@budget["monto_erogado"] / @budget["monto_presupuestado"].to_f * 100).to_i, "aria-valuemin": 0, "aria-valuemax": 100}
 
 <br>
 <br>
