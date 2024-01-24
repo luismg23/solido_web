@@ -66,7 +66,14 @@
                   = number_to_currency(@budget["monto_por_erogar"])
                 %td
                   .progress
-                    .progress-bar{role: "progressbar", style: "width: #{(@budget["monto_erogado"] / @budget["monto_presupuestado"].to_f * 100).to_i}%", "aria-valuenow": (@budget["monto_erogado"] / @budget["monto_presupuestado"].to_f * 100).to_i, "aria-valuemin": 0, "aria-valuemax": 100}
+                    - monto_presupuestado_budget = @budget["monto_presupuestado"]
+                    - monto_erogado_budget = @budget["monto_erogado"]
+
+                    - if monto_presupuestado_budget.present? && monto_presupuestado_budget.to_f != 0
+                      - progress_value = (monto_erogado_budget.to_f / monto_presupuestado_budget.to_f * 100).to_i
+                      .progress-bar{role: "progressbar", style: "width: #{progress_value}%", "aria-valuenow": progress_value, "aria-valuemin": 0, "aria-valuemax": 100}
+                    - else
+                      .progress-bar{role: "progressbar", style: "width: 0%", "aria-valuenow": 0, "aria-valuemin": 0, "aria-valuemax": 100}
 
 .container.mx-auto.my-5.p-3.bg-light
   %table.table.text-center
@@ -113,7 +120,14 @@
                     = number_to_currency(budgetline["monto_por_erogar"])
                   %td
                     .progress
-                      .progress-bar{role: "progressbar", style: "width: #{(budgetline["monto_erogado"] / budgetline["monto_presupuestado"].to_f * 100).to_i}%", "aria-valuenow": (@budget["monto_erogado"] / @budget["monto_presupuestado"].to_f * 100).to_i, "aria-valuemin": 0, "aria-valuemax": 100}
+                      - monto_presupuestado_budgetline = budgetline["monto_presupuestado"]
+                      - monto_erogado_budgetline = budgetline["monto_erogado"]
+
+                      - if monto_presupuestado_budgetline.present? && monto_presupuestado_budgetline.to_f != 0
+                        - progress_value = (monto_erogado_budgetline.to_f / monto_presupuestado_budgetline.to_f * 100).to_i
+                        .progress-bar{role: "progressbar", style: "width: #{progress_value}%", "aria-valuenow": progress_value, "aria-valuemin": 0, "aria-valuemax": 100}
+                      - else
+                        .progress-bar{role: "progressbar", style: "width: 0%", "aria-valuenow": 0, "aria-valuemin": 0, "aria-valuemax": 100}
 
 <br>
 <br>
