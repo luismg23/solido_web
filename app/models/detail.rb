@@ -2,13 +2,14 @@ class Detail
     include HTTParty
     base_uri Rails.application.config.base_api
     include ActiveModel::Model
-    attr_accessor :importe_renglon, :IdInterno, :IdInternoCheque, :IdInternoRenglon
+    attr_accessor :importe_renglon, :IdInterno, :IdInternoCheque, :IdInternoRenglon, :description
 
     def initialize(attributes = {})
       @importe_renglon = attributes[:importe_renglon]
       @IdInterno = attributes[:IdInterno]
       @IdInternoCheque = attributes[:IdInternoCheque]
       @IdInternoRenglon = attributes[:IdInternoRenglon]
+      @description = attributes[:description]
     end
   
     def self.all(page = 1, per_page = 10)
@@ -34,6 +35,11 @@ class Detail
     def self.pending(id)
         response = get("/checks/pending/#{id}")
         response.parsed_response
+    end
+
+    def self.delete(id)
+      response = get("/checkdetails/delete/#{id["id"]}")
+      response.code
     end
   
     def self.create(data)

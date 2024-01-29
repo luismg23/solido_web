@@ -52,6 +52,11 @@ class Check
       response.code
     end
 
+    def self.delete(id)
+      response = get("/checks/delete/#{id["id"]}")
+      response.code
+    end
+
     def self.create(data)
       response = HTTParty.post(
         "#{base_uri}/checks/",

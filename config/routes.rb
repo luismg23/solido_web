@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :suppliers
   resources :budgetlines
   resources :backups
+  resources :home
   resources :budgets do
     member do
       get 'details'
@@ -14,5 +15,6 @@ Rails.application.routes.draw do
   resources :details
   get '/checks/authorize/:id', to: 'checks#authorize', as: 'authorize_check'
   get '/checks/deauthorize/:id', to: 'checks#deauthorize', as: 'deauthorize_check'
+  get '/', to: redirect('home/index')
 
 end

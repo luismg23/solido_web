@@ -107,7 +107,7 @@
                 %th Erogado
                 %th Por Erogar
                 %th Progreso
-
+                %th Acciones
             %tbody
               - @budgetlines.each do |budgetline|
                 %tr
@@ -129,12 +129,20 @@
                         .progress-bar{role: "progressbar", style: "width: #{progress_value}%", "aria-valuenow": progress_value, "aria-valuemin": 0, "aria-valuemax": 100}
                       - else
                         .progress-bar{role: "progressbar", style: "width: 0%", "aria-valuenow": 0, "aria-valuemin": 0, "aria-valuemax": 100}
+                  %td.text-center
+                    %button.view-check-button.btn{type: "button", "data-budgetlines": @budgetlines.to_json, "data-details": @checkdetails.to_json, "data-checks": @checks.to_json, "data-element-id": "view_check_modal_#{budgetline["IdInterno"]}"}
+                      %i.fa.fa-eye.text-primary
+                    %button.download-check-button.btn{type: "button", "data-budgetlines": @budgetlines.to_json, "data-details": @checkdetails.to_json, "data-checks": @checks.to_json, "data-element-id": "view_check_modal_#{budgetline["IdInterno"]}"}
+                      %i.fa.fa-download.text-success
+                    = link_to budgetline_path(id: budgetline["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar esta renglón?, se eliminaran todos los movimientos y cheques relacionados" } do
+                      %i.fa.fa-trash.text-danger
+
 
 <br>
 <br>
 <br>
 .text-center
-  %h1#cheques_y_movimientos Cheques y Movimientos
+  %h1#cheques_y_movimientos Transacciones y Movimientos
 
 .container
   .row

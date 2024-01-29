@@ -10,5 +10,6 @@
         %td= detail["description"]
         %td{class: numeric_class(detail["importe_renglon"])}
           = number_to_currency(detail["importe_renglon"])
-        %td= "Editar Eliminar"
-
+        %td
+          =link_to "Editar", detail_path(id: detail["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este movimiento?" }
+          =link_to "Eliminar", detail_path(id: detail["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este movimiento?" }

@@ -14,6 +14,7 @@ gem 'dropzonejs-rails'
 gem "font-awesome-sass", "~> 6.5.1"
 gem 'devise', '~> 4.9.2'
 gem "mysql2"
+gem 'chartkick'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

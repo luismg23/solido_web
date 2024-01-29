@@ -57,6 +57,7 @@ class BudgetsController < ApplicationController
       @amount_available = budget_amount_available
       @checkdetails = Detail.by_budget_id(params[:id])
 
+      Rails.logger.info "los detalles son #{@checkdetails}"
       checks = Check.by_budget_id(params[:id])
       @checks = checks.sort_by { |check| DateTime.parse(check["fecha_emision_cheque"]) }.reverse
                         

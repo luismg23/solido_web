@@ -37,4 +37,16 @@ class ChecksController < ApplicationController
         render :new
       end
     end
+
+    def destroy
+      result = Check.delete(params)
+      if result == 200
+        flash[:success] = "La transacción se elimino exitosamente."
+        redirect_to request.referrer || root_path
+      else
+        flash[:error] = "Hubo un error al eliminar la transacción."
+        redirect_to request.referrer || root_path
+      end
+    end
+
 end

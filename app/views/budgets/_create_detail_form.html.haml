@@ -8,7 +8,11 @@
     = f.select :IdInternoRenglon, available_budgetlines.map{ |available_budgetline| [available_budgetline["nombre_renglon_presupuestal"], available_budgetline["IdInterno"]] }, {}, class: "form-control"
 
   .form-group.mb-3
-    = f.label :importe_renglon, "Importe", class: "form-label"
+    %strong= f.label :description, "Descripción", class: "form-label"
+    = f.text_field :description, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :importe_renglon, "Importe", class: "form-label"
     = f.text_field :importe_renglon, class: "form-control"
 
 

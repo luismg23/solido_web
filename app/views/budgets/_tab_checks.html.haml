@@ -6,6 +6,7 @@
       %th Total
       %th.text-center Status
       %th.text-center Acciones
+      %th.text-center Autorizar
   %tbody
     - @checks.each do |cheque|
       %tr
@@ -13,17 +14,20 @@
         %td= cheque["concepto_cheque"]
         %td{class: numeric_class(cheque["Total"])}
           = number_to_currency(cheque["Total"])
-        %td.text-center
+        %td.text-center{class: (cheque["autorizado"] == 1) ? 'text-success' : 'text-danger'}
           - if cheque["autorizado"] == 1
-            %i.fa.fa-check.text-success
+            Aprobado
           - else
-            %i.fa.fa-times.text-danger
+            Pendiente
         %td.text-center
           %button.view-check-button.btn{type: "button", "data-budgetlines": @budgetlines.to_json, "data-details": @checkdetails.to_json, "data-checks": @checks.to_json, "data-element-id": "view_check_modal_#{cheque["IdInterno"]}"}
             %i.fa.fa-eye.text-success
+          = link_to check_path(id: cheque["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar esta transacción?, se eliminaran todos los movimientos relacionados" } do
+            %i.fa.fa-trash.text-danger
+        %td.text-center
           - if cheque["autorizado"] == 1
-            %button.view-check-button.btn{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{deauthorize_check_path(cheque["IdInterno"].to_s)}'"}
-              %i.fa.fa-times.text-danger
+            %button.view-check-button.btn.btn-danger{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{deauthorize_check_path(cheque["IdInterno"].to_s)}'"}
+              Desaprobar
           - if cheque["autorizado"] == 0
-            %button.view-check-button.btn{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{authorize_check_path(cheque["IdInterno"].to_s)}'"}
-              %i.fa.fa-check.text-success
+            %button.view-check-button.btn.btn-success{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{authorize_check_path(cheque["IdInterno"].to_s)}'"}
+              Aprobar
