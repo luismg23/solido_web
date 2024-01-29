@@ -19,6 +19,11 @@ class Budget
       response = get("/budgets/all")
       response.parsed_response  
     end
+
+    def self.by_year(year)
+      response = get("/budgets/by_year/#{year}")
+      response.parsed_response  
+    end
   
     def self.unique_years()
       response = get("/budgets/unique_years")

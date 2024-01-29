@@ -10,3 +10,12 @@
   %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
   = javascript_include_tag 'https://cdn.jsdelivr.net/npm/chart.js'
   = javascript_include_tag 'https://cdn.jsdelivr.net/npm/chartkick'
+
+/ Google tag (gtag.js)
+%script{ async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-KQKNMNTXHJ" }
+  :plain
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KQKNMNTXHJ')
