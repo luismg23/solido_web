@@ -41,7 +41,17 @@ class Check
         response = get("/checks/pending/#{id}")
         response.parsed_response
     end
-  
+
+    def self.authorize(id)
+      response = get("/checks/authorize/#{id["id"]}")
+      response.code
+    end
+
+    def self.deauthorize(id)
+      response = get("/checks/deauthorize/#{id["id"]}")
+      response.code
+    end
+
     def self.create(data)
       response = HTTParty.post(
         "#{base_uri}/checks/",

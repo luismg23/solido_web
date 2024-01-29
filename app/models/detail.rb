@@ -12,8 +12,8 @@ class Detail
     end
   
     def self.all(page = 1, per_page = 10)
-      @request_ = RequestHandler.new('budgets')
-      @request_.all
+        response = get("/checkdetails/all")
+        response.parsed_response  
     end
   
     def self.unique_years()
@@ -22,12 +22,12 @@ class Detail
     end
 
     def self.by_id(id)
-      response = get("/budgets/by_id/#{id}")
+      response = get("/checkdetails/by_id/#{id}")
       response.parsed_response
     end
   
     def self.by_budget_id(id)
-      response = get("/budgetlines/by_budget_id/#{id}")
+      response = get("/checkdetails/by_budget_id/#{id}")
       response.parsed_response
     end
 
