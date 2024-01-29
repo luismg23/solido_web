@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   end
   resources :checks
   resources :details
+  get '/checks/authorize/:id', to: 'checks#authorize', as: 'authorize_check'
+  get '/checks/deauthorize/:id', to: 'checks#deauthorize', as: 'deauthorize_check'
+
 end

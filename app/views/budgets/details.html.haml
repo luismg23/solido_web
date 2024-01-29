@@ -13,6 +13,7 @@
 = render partial: 'create_detail'
 = render partial: 'pending'
 = render partial: 'view_checks'
+= render partial: 'view_check_detail'
 
 .container.mx-auto.my-5.p-3.bg-light
   %label
@@ -21,7 +22,7 @@
 
     %button#budget_create_check.btn.btn-primary{type: "button"} + Cheque
 
-    %button#budget_create_detail.btn.btn-primary{type: "button"} + Detalle
+    %button#budget_create_detail.btn.btn-primary{type: "button"} + Movimiento
 
 
 
@@ -32,7 +33,7 @@
 
     %button#budget_view_check.btn.btn-primary{type: "button"} Cheques
 
-    %button#loadButton.btn.btn-primary{type: "button"} Detalles
+    %button#budget_view_details.btn.btn-primary{type: "button"} Movimientos
 
     %button#loadButton.btn.btn-success{type: "button"} Exportar
 
@@ -95,7 +96,7 @@
       .custom-table-container
 
         .text-center
-          %h1 Renglónes
+          %h1#renglones Renglónes
 
           %table.table.table-striped.table-bordered
             %thead.thead-dark
@@ -133,7 +134,7 @@
 <br>
 <br>
 .text-center
-  %h1 Cheques y Movimientos
+  %h1#cheques_y_movimientos Cheques y Movimientos
 
 .container
   .row

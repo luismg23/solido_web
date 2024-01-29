@@ -1,18 +1,29 @@
 %table.table.table-striped.table-bordered
   %thead
     %tr
+      %th Fecha de emisión
       %th Concepto
       %th Total
-      %th Ver
-      %th Aprobar
+      %th.text-center Status
+      %th.text-center Acciones
   %tbody
-    - @pending.each do |cheque|
+    - @checks.each do |cheque|
       %tr
+        %td= formato_fecha_espanol(DateTime.parse(cheque["fecha_emision_cheque"]))
         %td= cheque["concepto_cheque"]
-        %td= cheque["Total"]
-        %td
-          = link_to details_budget_path(cheque["concepto_cheque"]), class: 'text-success icon-spacing' do
-            %i.fa.fa-eye
+        %td{class: numeric_class(cheque["Total"])}
+          = number_to_currency(cheque["Total"])
         %td.text-center
-          = link_to details_budget_path(cheque["concepto_cheque"]), class: 'text-success' do
-            %i.fa.fa-check
+          - if cheque["autorizado"] == 1
+            %i.fa.fa-check.text-success
+          - else
+            %i.fa.fa-times.text-danger
+        %td.text-center
+          %button.view-check-button.btn{type: "button", "data-budgetlines": @budgetlines.to_json, "data-details": @checkdetails.to_json, "data-checks": @checks.to_json, "data-element-id": "view_check_modal_#{cheque["IdInterno"]}"}
+            %i.fa.fa-eye.text-success
+          - if cheque["autorizado"] == 1
+            %button.view-check-button.btn{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{deauthorize_check_path(cheque["IdInterno"].to_s)}'"}
+              %i.fa.fa-times.text-danger
+          - if cheque["autorizado"] == 0
+            %button.view-check-button.btn{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{authorize_check_path(cheque["IdInterno"].to_s)}'"}
+              %i.fa.fa-check.text-success

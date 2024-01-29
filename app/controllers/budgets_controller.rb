@@ -1,4 +1,6 @@
 class BudgetsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:demo]
+
   PAYMENT_METHODS = {
     1 => 'Cheque',
     2 => 'Transferencia',
@@ -49,20 +51,20 @@ class BudgetsController < ApplicationController
       @budget = Budget.by_id(params[:id])
       @budgetlines = Budgetline.by_budget_id(params[:id])
       @banks = Bank.by_company_id(@budget["empresaid"])
+
       @suppliers = Supplier.by_company_id(@budget["empresaid"])
       @pending = Check.pending(params[:id])
       @amount_available = budget_amount_available
+      @checkdetails = Detail.by_budget_id(params[:id])
 
-
-      @checks = Check.by_budget_id(params[:id])
-
+      checks = Check.by_budget_id(params[:id])
+      @checks = checks.sort_by { |check| DateTime.parse(check["fecha_emision_cheque"]) }.reverse
+                        
       @available_budgetlines = Budgetline.by_budget_id(params[:id])
       @pending_checks = Check.by_budget_id(params[:id])
-      Rails.logger.info "los reng son #{@available_budgetlines.inspect}"
-
     end
 
-  private
+    private
 
     def apply_search_filters
       search_term = params[:search].downcase
@@ -79,8 +81,12 @@ class BudgetsController < ApplicationController
     end
 
     def budget_amount_available
+      Rails.logger.info "los budgetlines son #{@budgetlines}"
       amount = @budgetlines.map { |element| element["monto_presupuestado"] }.sum
       total = @budget["monto_presupuestado"]
+      Rails.logger.info "el budget es  #{@budget.inspect}"
+      Rails.logger.info "el total es #{total}"
+      Rails.logger.info "el amount es #{amount}"
       available = total -= amount
       available
     end
