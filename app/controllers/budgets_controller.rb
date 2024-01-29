@@ -9,7 +9,6 @@ class BudgetsController < ApplicationController
   }
   
     def index
-      @budgets = Budget.all
       @years = Budget.unique_years
       @searched = false
       @companies = Company.all
@@ -17,7 +16,7 @@ class BudgetsController < ApplicationController
       apply_search_filters if params[:search].present?
     
       latest_year = params[:year].presence || @years.max
-      filter_by_year(latest_year)
+      @budgets = Budget.by_year(latest_year)
     
       paginate_budgets
     
@@ -71,10 +70,6 @@ class BudgetsController < ApplicationController
       search_term = params[:search].downcase
       @budgets.select! { |budget| budget["nombre_presupuesto"].downcase.include?(search_term) }
       @searched = true
-    end
-
-    def filter_by_year(year)
-      @budgets.select! { |budget| budget["anio_presupuesto"] == year.to_i }
     end
 
     def paginate_budgets
