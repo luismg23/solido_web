@@ -31,6 +31,17 @@ class BudgetlinesController < ApplicationController
       end
     end
 
+    def destroy
+      result = Budgetline.delete(params)
+      if result == 200
+        flash[:success] = "El renglón se elimino exitosamente."
+        redirect_to request.referrer || root_path
+      else
+        flash[:error] = "Hubo un error al eliminar el renglón."
+        redirect_to request.referrer || root_path
+      end
+    end
+
     def details     
       @budget = Budget.by_id(params[:id])
       @budgetlines = Budgetline.by_budget_id(params[:id])
