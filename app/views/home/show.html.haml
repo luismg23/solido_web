@@ -1,10 +1,13 @@
-.text-center
-  %h1 Inicio
-
-  %div
-  = pie_chart @budgetlines.map { |budgetline| [budgetline["nombre_renglon_presupuestal"], budgetline["monto_presupuestado"]] }, height: '300px', library: { legend: { position: 'right' } }
-
-
-%div
-  - grouped_budgetlines = @budgetlines.group_by { |budgetline| budgetline["nombre_renglon_presupuestal"] }.map { |nombre, group| [nombre, group.sum { |item| item["monto_presupuestado"].to_f }] }
-  = bar_chart grouped_budgetlines
+%div.container
+  %div.d-flex.flex-column.justify-content-center.align-items-center.min-vh-100
+    %div.row.w-50
+      %div.col-12.text-center
+        = image_tag("lock-login", alt: "finder", class: "img-fluid mb-4", style: "width: 200px;")
+    %div.row.w-50
+      %div.col-12
+        %form{action: "/searchs", method: "get"}
+          .input-group.justify-content-center
+            %input.form-control.w-75{type: "text", placeholder: "Ingrese los datos a buscar", name: "query", minlength: "4"}
+            %div.input-group-append
+              %button.btn.btn-primary{type: "submit"}
+                Buscar

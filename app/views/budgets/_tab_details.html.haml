@@ -11,5 +11,7 @@
         %td{class: numeric_class(detail["importe_renglon"])}
           = number_to_currency(detail["importe_renglon"])
         %td
-          =link_to "Editar", detail_path(id: detail["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este movimiento?" }
-          =link_to "Eliminar", detail_path(id: detail["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este movimiento?" }
+          = link_to detail_path(id: detail["IdInterno"]), class: "icon-spacing", method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar esta movimiento?" } do
+            %i.fa.fa-pencil-alt
+          = link_to detail_path(id: detail["IdInterno"]), class: "icon-spacing", method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar esta movimiento?" } do
+            %i.fa.fa-trash.text-danger

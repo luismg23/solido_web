@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user
 
-    def current_user
-        true
-        #@current_user ||= warden.user(:user).email
-    end
+include CableReady::Broadcaster
+helper_method :current_user
+
+  def current_user
+    @current_user ||= User.find("1")
+    #@current_user ||= warden.user(:user).email
+  end
 end

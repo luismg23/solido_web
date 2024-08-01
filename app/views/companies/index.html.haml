@@ -2,7 +2,7 @@
   %h1 Empresas
 
 
-= render partial: 'modal'
+= render partial: 'create'
 
 - if flash[:success].present?
   .alert.alert-success= flash[:success]
@@ -33,6 +33,7 @@
                 %th Domicilio
                 %th Telefono
                 %th RFC
+                %th Acciones
             %tbody
               - @companies.each do |company|
                 %tr
@@ -40,6 +41,11 @@
                   %td= company["Domicilio"]
                   %td= company["Telefono"]
                   %td= company["RFC"]
-
+                  %td.text-center
+                    = link_to budgetline_path(id: 1) do
+                      %i.fa.fa-pencil.text-success.text-decoration-none
+                    = content_tag :span, ' ', class: 'mx-2'
+                    = link_to budgetline_path(id: 1) do
+                      %i.fa.fa-trash.text-danger.text-decoration-none
         .pagination-container
           = paginate @companies

@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
     
   def index
+    @company = Company.new
     @companies = Company.all
     Rails.logger.info "#{@companies}"
     @searched = false

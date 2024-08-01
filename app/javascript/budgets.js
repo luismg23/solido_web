@@ -6,6 +6,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewRenglones = document.getElementById('budget_view_budgetline');
     const viewCheckDetail = document.getElementById('view_check_button');
 
+    var botonIrArriba = document.getElementById('go-up-btn');
+    var menuDesplegable = document.getElementById('menu-desplegable');
+    var opciones = menuDesplegable.getElementsByTagName('li');
+  
+    botonIrArriba.addEventListener('click', function() {
+      menuDesplegable.style.display = (menuDesplegable.style.display === 'none' || menuDesplegable.style.display === '') ? 'block' : 'none';
+    });
+  
+    // Agregar manejadores de eventos a cada opción del menú
+    for (var i = 0; i < opciones.length; i++) {
+      opciones[i].addEventListener('click', function() {
+        var opcionId = this.id;
+        handleClick(opcionId);
+      });
+    }
+  
+  function handleClick(opcionId) {
+    if (opcionId == 1){
+        createBudgetline.click();
+    }
+    if (opcionId == 2){
+        createcj.click();
+    }
+    if (opcionId == 3){
+        createBudgetline.click();
+    }
+
+}
+  
     if (createBudgetline) {
         createBudgetline.addEventListener('click', function() {
             $('#modalBudgetline').modal('show');

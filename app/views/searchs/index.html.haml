@@ -1,0 +1,43 @@
+.container.mx-auto.my-5.p-3.bg-light
+  %h1
+    Presupuestos 
+  .container
+    .row
+      .col-xs-12
+        .custom-table-container
+          .tabla-container
+            %div.input-group.mb-3
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Nombre
+                %th Año
+                %th Acciones
+
+            %tbody
+              - @filtered_budgets.each do |budget|
+                %tr
+                  %td= budget["nombre_presupuesto"]
+                  %td= budget["anio_presupuesto"]
+                  %td.text-center
+                    = link_to details_budget_path(id: budget["IdInterno"]) do
+                      %i.fa.fa-eye.text-success.text-decoration-none
+
+.container.mx-auto.my-5.p-3.bg-light
+  %h1
+    Renglónes 
+
+
+.container.mx-auto.my-5.p-3.bg-light
+  %h1
+    Transacciones
+
+.container.mx-auto.my-5.p-3.bg-light
+  %h1
+    Movimientos
+
+.container.mx-auto.my-5.p-3.bg-light
+  %h1
+    Usuarios 
+ 

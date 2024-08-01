@@ -1,6 +1,8 @@
 require_relative "boot"
 
 require "rails/all"
+require "cable_ready/version"
+require "action_cable/engine"
 
 Bundler.require(*Rails.groups)
 
@@ -11,6 +13,5 @@ module SolidoWeb
     config.base_api = 'http://127.0.0.1:3000'
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.autoloader = :zeitwerk
-
   end
 end

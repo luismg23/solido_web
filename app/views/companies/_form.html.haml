@@ -1,0 +1,20 @@
+= form_for company, html: { class: "form" } do |f|
+  .form-group.mb-3
+    %strong= f.label :Nombre
+    = f.text_field :name, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Dirección
+    = f.text_field :address, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Telefono
+    = f.text_field :phone_number, class: "form-control"
+    %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+  .form-group.mb-3
+    %strong= f.label :RFC
+    = f.text_field :rfc, class: "form-control"
+
+  .actions.d-flex.justify-content-end
+    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: false

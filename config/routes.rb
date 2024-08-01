@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   devise_for :users
   resources :banks
   resources :companies
@@ -13,8 +15,10 @@ Rails.application.routes.draw do
   end
   resources :checks
   resources :details
+  resources :searchs
   get '/checks/authorize/:id', to: 'checks#authorize', as: 'authorize_check'
   get '/checks/deauthorize/:id', to: 'checks#deauthorize', as: 'deauthorize_check'
   get '/', to: redirect('home/index')
+  resource :example, constraints: -> { Rails.env.development? }
 
 end

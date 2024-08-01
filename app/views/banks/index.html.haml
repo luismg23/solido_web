@@ -13,10 +13,9 @@
   .alert.alert-danger= flash[:error]
 
 .container.mx-auto.my-5.p-3.bg-light
-  %button#crearButton.btn.btn-primary{type: "button"} Crear
+  - if can_see?("create")
+    %button#crearButton.btn.btn-primary{type: "button"} Crear
   
-  %button#loadButton.btn.btn-primary{type: "button"} Cargar
-
 .container
   .row
     .col-xs-12
@@ -38,6 +37,7 @@
                 %th Dirección del Banco
                 %th Telefono
                 %th Nombre
+                %th Acciones
             %tbody
               - @banks.each do |bank|
                 %tr
@@ -46,6 +46,11 @@
                   %td= bank["direccion_banco"]
                   %td= bank["telefono_banco"]
                   %td= bank["nombre_banco"]
-
+                  %td.text-center
+                    = link_to budgetline_path(id: 1) do
+                      %i.fa.fa-pencil.text-success.text-decoration-none
+                    = content_tag :span, ' ', class: 'mx-2'
+                    = link_to budgetline_path(id: 1) do
+                      %i.fa.fa-trash.text-danger.text-decoration-none
         .pagination-container
           = paginate @banks

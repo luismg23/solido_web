@@ -2,7 +2,7 @@ class Supplier
     include HTTParty
     base_uri Rails.application.config.base_api
     include ActiveModel::Model
-    attr_accessor :id, :name, :address, :phone_number, :rfc
+    attr_accessor :id, :name, :calle, :colonia, :ciudad, :estado, :phone_number, :rfc, :representante
   
     def initialize(attributes = {})
       @id = attributes[:IdInterno]

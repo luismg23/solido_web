@@ -1,10 +1,14 @@
 class BanksController < ApplicationController
+  ENTITY_NAME = "bancos".freeze
+
   protect_from_forgery with: :exception
   #before_action :authenticate_user!, only: [:index]
 
   #skip_before_action :verify_authenticity_token, only: [:upload]
+  helper_method :can_see?
 
   def index
+    Rails.logger.info "el current user es #{current_user.inspect}"
     @companies = Company.all
     @banks = Bank.all
     @searched = false
@@ -36,8 +40,6 @@ class BanksController < ApplicationController
   end
 
   def upload
-    Rails.logger.info "hola"
-
     if params[:file].present? && params[:file].is_a?(ActionDispatch::Http::UploadedFile)
       # Procesar el archivo CSV aquí
       uploaded_file = params[:file]
@@ -60,7 +62,9 @@ class BanksController < ApplicationController
       render json: { success: false, message: "No se proporcionó ningún archivo o el archivo no es válido" }
     end
   end
-  
-  private
 
+  def can_see?(action)
+    User.actions_by_user("luismg", ENTITY_NAME).include?(action)
+  end
+  
 end

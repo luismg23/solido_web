@@ -1,0 +1,80 @@
+= javascript_include_tag "application", defer: true
+
+<br>
+.text-center
+  %h1
+    = link_to details_budget_path(id: @budget["IdInterno"]) do
+      #{@budget['anio_presupuesto']} - #{@budget['nombre_presupuesto']}
+  %br
+  %h1
+    = link_to budgetline_path(id: @budgetline["IdInterno"]) do
+      #{@budgetline["cve_renglon_presupuestal"]} - #{@budgetline["nombre_renglon_presupuestal"]}
+
+.container.mt-3
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Clave
+                %th Nombre
+                %th Presupuestado
+                %th Erogado
+                %th Por Erogar
+                %th Progreso
+            %tbody
+              %tr
+                %td= @budgetline["cve_renglon_presupuestal"]
+                %td= @budgetline["nombre_renglon_presupuestal"]
+                %td{class: numeric_class(@budgetline["monto_presupuestado"])}
+                  = number_to_currency(@budgetline["monto_presupuestado"])
+                %td{class: numeric_class(@budgetline["monto_erogado"])}
+                  = number_to_currency(@budgetline["monto_erogado"])
+                %td{class: numeric_class(@budgetline["monto_por_erogar"])}
+                  = number_to_currency(@budgetline["monto_por_erogar"])
+                %td
+                  .progress
+                    - monto_presupuestado_budget = @budgetline["monto_presupuestado"]
+                    - monto_erogado_budget = @budgetline["monto_erogado"]
+
+                    - if monto_presupuestado_budget.present? && monto_presupuestado_budget.to_f != 0
+                      - progress_value = (monto_erogado_budget.to_f / monto_presupuestado_budget.to_f * 100).to_i
+                      .progress-bar{role: "progressbar", style: "width: #{progress_value}%", "aria-valuenow": progress_value, "aria-valuemin": 0, "aria-valuemax": 100}
+                    - else
+                      .progress-bar{role: "progressbar", style: "width: 0%", "aria-valuenow": 0, "aria-valuemin": 0, "aria-valuemax": 100}
+
+<br>
+<br>
+<br>
+.text-center
+  %h1#cheques_y_movimientos Movimientos
+
+.container.mt-3
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %table.table.table-striped.table-bordered
+              %thead
+                %tr
+                  %th Fecha de emisión
+                  %th Transacción
+                  %th Movimiento
+                  %th Total
+                  %th Acciones
+              %tbody
+                - @merged_details.each do |detail|
+                  %tr
+                    %td= formato_fecha_espanol(DateTime.parse(detail["fecha_emision_cheque"]))
+                    %td= detail["concepto_cheque"]
+                    %td= detail["description"]
+                    %td{class: numeric_class(detail["importe_renglon"])}
+                      = number_to_currency(detail["importe_renglon"])
+                    %td.text-center
+                      = link_to checks_path(id: detail["IdInterno"]) do
+                        %i.fa.fa-eye.text-success.text-decoration-none

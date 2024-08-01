@@ -32,6 +32,11 @@ class Detail
       response.parsed_response
     end
 
+    def self.by_budgetline_id(id)
+      response = get("/checkdetails/by_budgetline_id/#{id}")
+      response.parsed_response
+    end
+
     def self.pending(id)
         response = get("/checks/pending/#{id}")
         response.parsed_response
