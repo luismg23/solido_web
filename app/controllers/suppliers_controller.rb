@@ -1,6 +1,8 @@
 class SuppliersController < ApplicationController
     
     def index
+      @supplier = Supplier.new
+      Rails.logger.info " el supplier es #{@supplier.inspect}"
       @suppliers = Supplier.all
       @searched = false
   

@@ -1,0 +1,31 @@
+#go-up-btn {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #menu-desplegable {
+    display: none;
+    position: fixed;
+    left: 20px;
+    bottom: 60px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #menu-desplegable li {
+    list-style: none;
+    padding: 5px 0;
+  }
+  
+  #menu-desplegable li:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  

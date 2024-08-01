@@ -28,7 +28,7 @@ class Check
     end
 
     def self.by_id(id)
-      response = get("/budgets/by_id/#{id}")
+      response = get("/checks/by_id/#{id}")
       response.parsed_response
     end
   

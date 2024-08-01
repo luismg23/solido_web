@@ -1,0 +1,37 @@
+= form_for supplier, html: { class: "form" } do |f|
+  .form-group.mb-3
+    %strong= f.label :Nombre
+    = f.text_field :name, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Calle
+    = f.text_field :calle, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Colonia
+    = f.text_field :colonia, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Ciudad
+    = f.text_field :ciudad, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Estado
+    = f.text_field :estado, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Telefono
+    = f.text_field :phone_number, class: "form-control"
+    %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+  .form-group.mb-3
+    %strong= f.label :RFC
+    = f.text_field :rfc, class: "form-control"
+
+  .form-group.mb-3
+    %strong= f.label :Representante
+    = f.text_field :representante, class: "form-control"
+
+
+  .actions.d-flex.justify-content-end
+    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: false

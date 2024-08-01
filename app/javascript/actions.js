@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   const crearButton = document.getElementById('crearButton');
+  const editButton = document.getElementById('edit-button');
 
+  console.log(editButton)
   crearButton.addEventListener('click', function() {
       $('#myModal').modal('show');
 
@@ -63,5 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
       telefono.addEventListener('input', enableButton);
       nombre.addEventListener('input', enableButton);
 
+    });
+
+    crearButton.addEventListener('click', function() {
+      $('#editModal').modal('show');
+      console.log('daaa')
     });
 });

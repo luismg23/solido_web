@@ -10,8 +10,8 @@
 
 .container.mx-auto.my-5.p-3.bg-light
   %button#crearButton.btn.btn-primary{type: "button"} Crear
-  
-  %button#loadButton.btn.btn-primary{type: "button"} Cargar
+
+= render partial: 'create'
 
 .container
   .row
@@ -37,6 +37,7 @@
                 %th Estado
                 %th RFC
                 %th Representante
+                %th Acciones
 
             %tbody
               - @suppliers.each do |supplier|
@@ -49,6 +50,11 @@
                   %td= supplier["Estado"]
                   %td= supplier["RFC"]
                   %td= supplier["Representante"]
-
+                  %td.text-center
+                    = link_to budgetline_path(id: 1) do
+                      %i.fa.fa-pencil.text-success.text-decoration-none
+                    = content_tag :span, ' ', class: 'mx-2'
+                    = link_to budgetline_path(id: 1) do
+                      %i.fa.fa-trash.text-danger.text-decoration-none
         .pagination-container
           = paginate @suppliers

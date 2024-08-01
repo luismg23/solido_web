@@ -1,6 +1,4 @@
-class ChecksController < ApplicationController
-    
-  
+class ChecksController < ApplicationController  
   def authorize
     result = Check.authorize(params)
 

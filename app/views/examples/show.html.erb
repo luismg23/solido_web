@@ -1,0 +1,37 @@
+
+
+
+<% if respond_to?(:javascript_importmap_tags) %>
+<%= javascript_importmap_tags %>
+<% end %>
+
+<body style="cursor: auto;">
+<main class="container">
+  <h1>StimulusReflex</h1>
+
+  <p>Actual demonstrations will show up in this space, soon. In the meantime, verify that your installation was successful:</p>
+
+  <button data-reflex="click->Example#increment">Increment</button>
+  <button data-reflex="click->Example#reset">Reset</button>
+  <button data-reflex="click->Example#testing">Test</button>
+
+  <br />
+
+  <div>
+    Last Refresh:
+    <b><mark id="time"><%= Time.now %></mark></b>
+  </div>
+
+  <div>
+    Clicked
+    <b><mark id="count"><%= session[:count] || 0 %></mark></b>
+    times
+  </div>
+
+  <br/>
+
+  <progress value="<%= session[:count] %>" max="10"></progress>
+
+  <div id="reload"></div>
+</body>
+</html>

@@ -1,16 +1,21 @@
+.centered-image
+  = image_tag("lock-login.png", alt: "Iniciar Sesión", width: "300", height: "250")
+
 .text-center
-  %h1 Iniciar Sesión
+  %h1 Bienvenido
+.text-center
+  %h5 Ingresa tu e-mail y contraseña
 
 .container
   .row.justify-content-center
     .col-md-6
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form' }) do |f|
         .form-group
-          = f.label 'E-mail'
-          = f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email"
+          = f.label 'E-mail', class: 'col-form-label'
+          = f.email_field :email, class: 'form-control', autofocus: true, autocomplete: 'email'
 
         .form-group
-          = f.label 'Password'
+          = f.label 'Password', class: 'col-form-label'
           = f.password_field :password, class: 'form-control', autocomplete: "current-password"
 
         - if devise_mapping.rememberable?

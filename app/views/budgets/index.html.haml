@@ -59,10 +59,10 @@
                   %td{class: numeric_class(budget["monto_por_erogar"])}
                     = number_to_currency(budget["monto_por_erogar"])
                   %td 
-                    = link_to details_budget_path(budget["IdInterno"]), class: 'text-success icon-spacing' do
+                    = link_to details_budget_path(budget["IdInterno"]), class: 'text-success icon-spacing text-decoration-none' do
                       %i.fa.fa-eye
-                    %i.fa.fa-trash.text-danger
-
+                    = link_to details_budget_path(budget["IdInterno"]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger icon-spacing' do
+                      %i.fa.fa-trash
 
         .pagination-container
           = paginate @budgets

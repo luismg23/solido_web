@@ -13,23 +13,28 @@ class Budgetline
     end
   
     def self.all(page = 1, per_page = 10)
-      @request_ = RequestHandler.new('budgets')
+      @request_ = RequestHandler.new('budgetlines')
       @request_.all
     end
   
     def self.unique_years()
-      response = get("/budgets/unique_years")
+      response = get("/budgetlines/unique_years")
       response.parsed_response  
     end
 
     def self.by_id(id)
-      response = get("/budgets/by_id/#{id}")
+      response = get("/budgetlines/by_id/#{id}")
       response.parsed_response
     end
   
     def self.by_budget_id(id)
       response = get("/budgetlines/by_budget_id/#{id}")
       response.parsed_response
+    end
+
+    def self.delete(id)
+      response = get("/budgetlines/delete/#{id["id"]}")
+      response.code
     end
   
     def self.create(data)

@@ -1,6 +1,10 @@
+= javascript_include_tag "application", defer: true
+
 <br>
 .text-center
-  %h1 #{@budget["anio_presupuesto"]} - #{@budget["nombre_presupuesto"]}
+  %h1
+    = link_to details_budget_path(id: @budget["IdInterno"]) do
+      #{@budget['anio_presupuesto']} - #{@budget['nombre_presupuesto']}
 
 - if flash[:success].present?
   .alert.alert-success= flash[:success]
@@ -20,10 +24,9 @@
     Agregar
     %button#budget_create_budgetline.btn.btn-primary{type: "button"} + Renglón
 
-    %button#budget_create_check.btn.btn-primary{type: "button"} + Cheque
+    %button#budget_create_check.btn.btn-primary{type: "button"} + Transacción
 
     %button#budget_create_detail.btn.btn-primary{type: "button"} + Movimiento
-
 
 
 .container.mx-auto.my-5.p-3.bg-light
@@ -31,7 +34,7 @@
     Visualizar
     %button#budget_view_budgetline.btn.btn-primary{type: "button"} Renglones
 
-    %button#budget_view_check.btn.btn-primary{type: "button"} Cheques
+    %button#budget_view_check.btn.btn-primary{type: "button"} Transacciones
 
     %button#budget_view_details.btn.btn-primary{type: "button"} Movimientos
 
@@ -130,8 +133,8 @@
                       - else
                         .progress-bar{role: "progressbar", style: "width: 0%", "aria-valuenow": 0, "aria-valuemin": 0, "aria-valuemax": 100}
                   %td.text-center
-                    %button.view-check-button.btn{type: "button", "data-budgetlines": @budgetlines.to_json, "data-details": @checkdetails.to_json, "data-checks": @checks.to_json, "data-element-id": "view_check_modal_#{budgetline["IdInterno"]}"}
-                      %i.fa.fa-eye.text-primary
+                    = link_to budgetline_path(id: budgetline["IdInterno"]) do
+                      %i.fa.fa-eye.text-success.text-decoration-none
                     %button.download-check-button.btn{type: "button", "data-budgetlines": @budgetlines.to_json, "data-details": @checkdetails.to_json, "data-checks": @checks.to_json, "data-element-id": "view_check_modal_#{budgetline["IdInterno"]}"}
                       %i.fa.fa-download.text-success
                     = link_to budgetline_path(id: budgetline["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar esta renglón?, se eliminaran todos los movimientos y cheques relacionados" } do
@@ -149,7 +152,7 @@
     .col-xs-12
       %ul.nav.nav-tabs
         %li.nav-item
-          = link_to 'Cheques', '#tab1', class: 'nav-link active', data: { toggle: 'tab' }
+          = link_to 'Transacciones', '#tab1', class: 'nav-link active', data: { toggle: 'tab' }
         %li.nav-item
           = link_to 'Movimientos', '#tab2', class: 'nav-link', data: { toggle: 'tab' }
 
@@ -164,3 +167,8 @@
 <br>
 <br>
 <br>
+= image_tag("prueba.ico", alt: "Ir Arriba", class: "icono-imagen", id: "go-up-btn")
+%ul#menu-desplegable
+  %li{id: '1'} + Renglón
+  %li{id: '2'} + Transacción
+  %li{id: '3'} + Movimiento

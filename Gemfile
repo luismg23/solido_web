@@ -15,6 +15,8 @@ gem "font-awesome-sass", "~> 6.5.1"
 gem 'devise', '~> 4.9.2'
 gem "mysql2"
 gem 'chartkick'
+gem 'cable_ready'
+gem 'stimulus_reflex', '3.5.0.rc3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -80,3 +82,4 @@ group :test do
   gem "selenium-webdriver"
 
 end
+gem "action-cable-redis-backport", "~> 1"
