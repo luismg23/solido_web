@@ -12,6 +12,33 @@
 - if flash[:error].present?
   .alert.alert-danger= flash[:error]
 
+%br
+%div{style: "display: flex; flex-direction: row; width: 100%;"}
+  %div{style: "flex: 1; padding: 10px; max-width: 100%; margin-left: 10%;"}
+    .container.p-3.bg-light{ style: "width: 70%; margin-left: 16%;" }
+      %label
+        Agregar
+        %button#budget_create_budgetline.btn.btn-primary{type: "button"} + Renglón
+        %button#budget_create_check.btn.btn-primary{type: "button"} + Transacción
+        %button#budget_create_detail.btn.btn-primary{type: "button"} + Movimiento
+    %br
+    .container.p-3.bg-light{ style: "width: 90%; margin-left: 16%;" }
+      %label
+        Visualizar
+        %button#budget_view_budgetline.btn.btn-primary{type: "button"} Renglones
+        %button#budget_view_check.btn.btn-primary{type: "button"} Transacciones
+        %button#budget_view_details.btn.btn-primary{type: "button"} Movimientos
+        %button#loadButton.btn.btn-success{type: "button"} Exportar
+  %div{style: "flex: 1; padding: 10px; max-width: 50%; margin-right: 200px"}
+    - presupuestado = @budget["monto_presupuestado"].to_f
+    - erogado = @budget["monto_erogado"].to_f
+    - por_erogar = @budget["monto_por_erogar"].to_f
+    - total = presupuestado
+    - total = 1 if total.zero?
+
+    - porcentaje_erogado = ((erogado / total) * 100).round
+    - porcentaje_por_erogar = ((por_erogar / total) * 100).round
+    = pie_chart [["Por erogar", porcentaje_por_erogar], ["Erogado", porcentaje_erogado]], colors: ["#59b41b", "#b8250e"]
 = render partial: 'create_budgetline'
 = render partial: 'create_check'
 = render partial: 'create_detail'
@@ -19,27 +46,7 @@
 = render partial: 'view_checks'
 = render partial: 'view_check_detail'
 
-.container.mx-auto.my-5.p-3.bg-light
-  %label
-    Agregar
-    %button#budget_create_budgetline.btn.btn-primary{type: "button"} + Renglón
-
-    %button#budget_create_check.btn.btn-primary{type: "button"} + Transacción
-
-    %button#budget_create_detail.btn.btn-primary{type: "button"} + Movimiento
-
-
-.container.mx-auto.my-5.p-3.bg-light
-  %label
-    Visualizar
-    %button#budget_view_budgetline.btn.btn-primary{type: "button"} Renglones
-
-    %button#budget_view_check.btn.btn-primary{type: "button"} Transacciones
-
-    %button#budget_view_details.btn.btn-primary{type: "button"} Movimientos
-
-    %button#loadButton.btn.btn-success{type: "button"} Exportar
-
+%br
 .container
   .row
     .col-xs-12

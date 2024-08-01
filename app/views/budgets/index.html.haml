@@ -61,6 +61,8 @@
                   %td 
                     = link_to details_budget_path(budget["IdInterno"]), class: 'text-success icon-spacing text-decoration-none' do
                       %i.fa.fa-eye
+                    = link_to details_budget_path(budget["IdInterno"]), class: 'text-warning icon-spacing text-decoration-none' do
+                      %i.fa.fa-pencil
                     = link_to details_budget_path(budget["IdInterno"]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger icon-spacing' do
                       %i.fa.fa-trash
 
