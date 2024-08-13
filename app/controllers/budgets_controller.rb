@@ -63,6 +63,28 @@ class BudgetsController < ApplicationController
       @pending_checks = Check.by_budget_id(params[:id])
     end
 
+    def export
+      @budget = Budget.by_id(params[:id])
+      
+      data = [
+        ["Nombre", "Edad", "Ciudad"],
+        ["Juan", 28, "Madrid"],
+        ["Ana", 22, "Barcelona"],
+        ["Luis", 31, "Valencia"]
+      ]
+
+      csv_data = CSV.generate(headers: true) do |csv|
+        csv << ["Nombre", "Edad", "Ciudad"]
+        data.each do |user|
+          csv << user
+        end
+      end
+  
+      respond_to do |format|
+        format.csv { send_data csv_data, filename: "presupuesto_#{@budget["IdInterno"]}_#{@budget["nombre_presupuesto"]}_#{Date.today}.csv" }
+      end
+    end
+  
     private
 
     def apply_search_filters

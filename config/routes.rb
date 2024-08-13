@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :searchs
   get '/checks/authorize/:id', to: 'checks#authorize', as: 'authorize_check'
   get '/checks/deauthorize/:id', to: 'checks#deauthorize', as: 'deauthorize_check'
+  get 'budgets/:id/export', to: 'budgets#export', as: 'export_budget'
   get '/', to: redirect('home/index')
   resource :example, constraints: -> { Rails.env.development? }
 
