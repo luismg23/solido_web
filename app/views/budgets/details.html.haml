@@ -28,7 +28,8 @@
         %button#budget_view_budgetline.btn.btn-primary{type: "button"} Renglones
         %button#budget_view_check.btn.btn-primary{type: "button"} Transacciones
         %button#budget_view_details.btn.btn-primary{type: "button"} Movimientos
-        %button#loadButton.btn.btn-success{type: "button"} Exportar
+        = link_to "Exportar", export_budget_path(format: :csv), class: "btn btn-success", id: "loadButton", method: :get
+  
   %div{style: "flex: 1; padding: 10px; max-width: 50%; margin-right: 200px"}
     - presupuestado = @budget["monto_presupuestado"].to_f
     - erogado = @budget["monto_erogado"].to_f
