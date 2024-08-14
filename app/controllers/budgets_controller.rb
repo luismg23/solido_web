@@ -54,10 +54,10 @@ class BudgetsController < ApplicationController
       @suppliers = Supplier.by_company_id(@budget["empresaid"])
       @pending = Check.pending(params[:id])
       @amount_available = budget_amount_available
-      @checkdetails = Detail.by_budget_id(params[:id])
+      #@checkdetails = Detail.by_budget_id(params[:id])
 
-      checks = Check.by_budget_id(params[:id])
-      @checks = checks.sort_by { |check| DateTime.parse(check["fecha_emision_cheque"]) }.reverse
+      #checks = Check.by_budget_id(params[:id])
+      #@checks = checks.sort_by { |check| DateTime.parse(check["fecha_emision_cheque"]) }.reverse
                         
       @available_budgetlines = Budgetline.by_budget_id(params[:id])
       @pending_checks = Check.by_budget_id(params[:id])
