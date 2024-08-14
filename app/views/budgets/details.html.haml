@@ -152,31 +152,3 @@
 <br>
 <br>
 <br>
-.text-center
-  %h1#cheques_y_movimientos Transacciones y Movimientos
-
-.container
-  .row
-    .col-xs-12
-      %ul.nav.nav-tabs
-        %li.nav-item
-          = link_to 'Transacciones', '#tab1', class: 'nav-link active', data: { toggle: 'tab' }
-        %li.nav-item
-          = link_to 'Movimientos', '#tab2', class: 'nav-link', data: { toggle: 'tab' }
-
-      .tab-content
-        .tab-pane.fade.show.active#tab1
-          = render partial: 'tab_checks'
-        .tab-pane.fade#tab2
-          = render partial: 'tab_details'
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-= image_tag("prueba.ico", alt: "Ir Arriba", class: "icono-imagen", id: "go-up-btn")
-%ul#menu-desplegable
-  %li{id: '1'} + Renglón
-  %li{id: '2'} + Transacción
-  %li{id: '3'} + Movimiento
