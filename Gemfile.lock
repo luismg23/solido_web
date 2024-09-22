@@ -170,7 +170,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.2)
     multi_xml (0.6.0)
-    mysql2 (0.5.5)
+    mysql2 (0.5.6)
     net-imap (0.4.4)
       date
       net-protocol
@@ -181,6 +181,8 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.4-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -254,6 +256,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.6.8-arm64-darwin)
     sqlite3 (1.6.8-x86_64-darwin)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
@@ -295,6 +298,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  arm64-darwin-23
   x86_64-darwin-22
 
 DEPENDENCIES
@@ -313,7 +317,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
-  mysql2
+  mysql2 (~> 0.5.6)
   puma (~> 5.0)
   rails (~> 7.0.8)
   redis (~> 4.0)
@@ -328,7 +332,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.4.14
