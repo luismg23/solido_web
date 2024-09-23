@@ -22,8 +22,38 @@ class Bank
 
   def self.by_id(id)
     response = get("/banks/by_id/#{id}")
-    response.parsed_response
+
+    if response.success?
+      bank_data = response.parsed_response
+
+      Bank.new(
+        IdInterno: bank_data["IdInterno"],
+        cve_banco: bank_data["cve_banco"],
+        sucursal_banco: bank_data["sucursal_banco"],
+        direccion_banco: bank_data["direccion_banco"],
+        telefono_banco: bank_data["telefono_banco"],
+        nombre_banco: bank_data["nombre_banco"],
+        empresa_fk: bank_data["empresa_fk"]
+      )
+    else
+      nil
+    end
   end
+
+  def self.update(id, data)
+    Rails.logger.info "el id es #{id.inspect}"
+
+    Rails.logger.info "la data es #{data.inspect}"
+    response = HTTParty.patch(
+      "#{base_uri}/banks/#{id}/",
+      body: data.to_json,
+      headers: {
+        'Content-Type' => 'application/json'
+      }
+    )
+    Rails.logger.info "el response code es #{response.inspect}"
+    response.code
+  end  
 
   def self.by_company_id(id)
     response = get("/banks/by_company_id/#{id}")
