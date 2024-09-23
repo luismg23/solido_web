@@ -8,7 +8,6 @@ class BanksController < ApplicationController
   helper_method :can_see?
 
   def index
-    Rails.logger.info "el current user es #{current_user.inspect}"
     @companies = Company.all
     @banks = Bank.all
     @searched = false
@@ -29,7 +28,6 @@ class BanksController < ApplicationController
 
   def create
     result = Bank.create(params)
-    Rails.logger.info "el result es #{result}"
     if result == 200
       flash[:success] = "El banco se creó exitosamente."
       redirect_to index
@@ -39,24 +37,28 @@ class BanksController < ApplicationController
     end
   end
 
+  def edit
+    @companies = Company.all
+    @bank = Bank.by_id(params[:id])
+  end
+
+  def update
+    Rails.logger.info "Los params son #{params}"
+    @bank = Bank.by_id(params[:id])
+    if Bank.update(@bank.IdInterno, params["bank"])
+      flash[:success] = "El banco se actualizo exitosamente."
+      redirect_to banks_path
+    else
+      redirect_to banks_path
+    end
+  end
+
   def upload
     if params[:file].present? && params[:file].is_a?(ActionDispatch::Http::UploadedFile)
-      # Procesar el archivo CSV aquí
       uploaded_file = params[:file]
       
-      # Puedes acceder a la información del archivo, por ejemplo:
-      Rails.logger.info "Nombre del archivo: #{uploaded_file.original_filename}"
-      Rails.logger.info "Tipo MIME del archivo: #{uploaded_file.content_type}"
-      Rails.logger.info "Tamaño del archivo: #{uploaded_file.size} bytes"
-
-      # Lógica adicional para procesar el archivo CSV, por ejemplo:
       CSV.foreach(uploaded_file.path, headers: true) do |row|
-        # Procesar cada fila del archivo CSV
-        Rails.logger.info "Fila del CSV: #{row}"
       end
-
-      # Puedes realizar más acciones según tus necesidades
-
       render json: { success: true, message: "Archivo CSV procesado exitosamente" }
     else
       render json: { success: false, message: "No se proporcionó ningún archivo o el archivo no es válido" }
@@ -66,5 +68,4 @@ class BanksController < ApplicationController
   def can_see?(action)
     User.actions_by_user("luismg", ENTITY_NAME).include?(action)
   end
-  
 end
