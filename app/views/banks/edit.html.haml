@@ -1,32 +1,40 @@
-- Rails.logger.info "Bank object: #{@bank.inspect}"
-= form_for @bank, url: bank_path(@bank.IdInterno), method: :patch, html: { class: "form" } do |f|
-  = f.hidden_field :IdInterno, value: @bank.IdInterno
+.text-center.mt-5.mb-5
+  %h1 Editar Banco
 
-  .form-group.mb-3
-    %strong= f.label :cve_banco, "Clave"
-    = f.text_field :cve_banco, class: "form-control"
-    %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3.d-flex.justify-content-center
+            = form_for @bank, url: bank_path(@bank.IdInterno), method: :patch, html: { class: "form" } do |f|
+              = f.hidden_field :IdInterno, value: @bank.IdInterno
 
-  .form-group.mb-3
-    %strong= f.label :sucursal_banco, "Sucursal"
-    = f.text_field :sucursal_banco, class: "form-control"
+              .form-group.mb-3
+                %strong= f.label :cve_banco, "Clave"
+                = f.text_field :cve_banco, class: "form-control"
+                %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
-  .form-group.mb-3
-    %strong= f.label :direccion_banco, "Dirección"
-    = f.text_field :direccion_banco, class: "form-control"
+              .form-group.mb-3
+                %strong= f.label :sucursal_banco, "Sucursal"
+                = f.text_field :sucursal_banco, class: "form-control"
 
-  .form-group.mb-3
-    %strong= f.label :telefono_banco, "Teléfono"
-    = f.text_field :telefono_banco, class: "form-control"
-    %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+              .form-group.mb-3
+                %strong= f.label :direccion_banco, "Dirección"
+                = f.text_field :direccion_banco, class: "form-control"
 
-  .form-group.mb-3
-    %strong= f.label :nombre_banco, "Nombre"
-    = f.text_field :nombre_banco, class: "form-control"
+              .form-group.mb-3
+                %strong= f.label :telefono_banco, "Teléfono"
+                = f.text_field :telefono_banco, class: "form-control"
+                %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
-  .form-group.mb-3
-    %strong= f.label :empresa_fk, "Empresa"
-    = f.select :empresa_fk, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
+              .form-group.mb-3
+                %strong= f.label :nombre_banco, "Nombre"
+                = f.text_field :nombre_banco, class: "form-control"
 
-  .actions.d-flex.justify-content-end
-    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: false
+              .form-group.mb-3
+                %strong= f.label :empresa_fk, "Empresa"
+                = f.select :empresa_fk, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
+
+              .actions.d-flex.justify-content-end
+                = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: true

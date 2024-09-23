@@ -25,7 +25,6 @@ class ChecksController < ApplicationController
 
 
     def create
-      Rails.logger.info "los params son #{params}"
       result = Check.create(params)
       if result == 200
         flash[:success] = "El cheque se creó exitosamente."

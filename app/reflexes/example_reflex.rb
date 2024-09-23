@@ -3,7 +3,6 @@
 class ExampleReflex < ApplicationReflex
 
   def increment
-    Rails.logger.info "????"
     count = session[:count] || 0
     session[:count] = count + 1
 
@@ -26,7 +25,6 @@ class ExampleReflex < ApplicationReflex
   end
 
   def testing
-    Rails.logger.info "porfin????"
     true
   end
 end

@@ -29,7 +29,6 @@ class Supplier
     end
   
     def self.create(data)
-      Rails.logger.info "la data es: #{data}"
       response = HTTParty.post(
         "#{base_uri}/company/",
         body: data.to_json,

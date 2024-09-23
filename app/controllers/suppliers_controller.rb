@@ -2,7 +2,6 @@ class SuppliersController < ApplicationController
     
     def index
       @supplier = Supplier.new
-      Rails.logger.info " el supplier es #{@supplier.inspect}"
       @suppliers = Supplier.all
       @searched = false
   
@@ -22,7 +21,6 @@ class SuppliersController < ApplicationController
   
     def create
       result = Bank.create(params)
-      Rails.logger.info "el result es #{result}"
       if result == 200
         flash[:success] = "La empresa se creó exitosamente."
         redirect_to index
