@@ -98,12 +98,8 @@ class BudgetsController < ApplicationController
     end
 
     def budget_amount_available
-      Rails.logger.info "los budgetlines son #{@budgetlines}"
       amount = @budgetlines.map { |element| element["monto_presupuestado"] }.sum
       total = @budget["monto_presupuestado"]
-      Rails.logger.info "el budget es  #{@budget.inspect}"
-      Rails.logger.info "el total es #{total}"
-      Rails.logger.info "el amount es #{amount}"
       available = total -= amount
       available
     end

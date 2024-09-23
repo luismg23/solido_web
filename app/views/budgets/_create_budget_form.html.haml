@@ -1,23 +1,27 @@
 = form_for budget, html: { class: "form" } do |f|
   .form-group.mb-3
-    = f.label :cve_presupuesto, "Clave", class: "form-label"
+    %strong= f.label :cve_presupuesto, "Clave", class: "form-label"
     = f.text_field :cve_presupuesto, class: "form-control"
+    %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
   .form-group.mb-3
-    = f.label :anio_presupuesto, "Año", class: "form-label"
+    %strong= f.label :anio_presupuesto, "Año", class: "form-label"
     = f.text_field :anio_presupuesto, class: "form-control"
+    %p.danger-text#year-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
   .form-group.mb-3
-    = f.label :nombre_presupuesto, "Nombre", class: "form-label"
+    %strong= f.label :nombre_presupuesto, "Nombre", class: "form-label"
     = f.text_field :nombre_presupuesto, class: "form-control"
+    %p.danger-text#name-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
   .form-group.mb-3
-    = f.label :monto_presupuestado, "Monto Presupuestado", class: "form-label"
+    %strong= f.label :monto_presupuestado, "Monto Presupuestado", class: "form-label"
     = f.text_field :monto_presupuestado, class: "form-control"
+    %p.danger-text#amount-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
   .form-group.mb-3
     %strong= f.label :Empresa
     = f.select :empresaid, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
 
   .actions.d-flex.justify-content-end
-    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: false
+    = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: true

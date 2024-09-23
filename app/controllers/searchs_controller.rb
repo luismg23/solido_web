@@ -1,9 +1,7 @@
 class SearchsController < ApplicationController
 
   def index
-    Rails.logger.info "los params son #{params[:query]}"
-    Rails.logger.info "el data es #{budget_finder}"
-    
+    budget_finder
   end
 
   def budget_finder

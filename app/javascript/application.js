@@ -10,6 +10,7 @@ import "bootstrap"
 import debounced from "debounced"
 import Rails from '@rails/ujs'
 
+import "./banks" 
 import "./actions" 
 import "./budgets"
 import "./checks"

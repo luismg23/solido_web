@@ -3,7 +3,6 @@ class CompaniesController < ApplicationController
   def index
     @company = Company.new
     @companies = Company.all
-    Rails.logger.info "#{@companies}"
     @searched = false
 
     if params[:search].present?
@@ -22,7 +21,6 @@ class CompaniesController < ApplicationController
 
   def create
     result = Bank.create(params)
-    Rails.logger.info "el result es #{result}"
     if result == 200
       flash[:success] = "La empresa se creó exitosamente."
       redirect_to index

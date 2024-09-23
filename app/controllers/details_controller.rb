@@ -2,7 +2,6 @@ class DetailsController < ApplicationController
     
   
     def create
-      Rails.logger.info "los params son #{params}"
       result = Detail.create(params)
       if result == 200
         flash[:success] = "El detalle se creó exitosamente."
@@ -14,7 +13,6 @@ class DetailsController < ApplicationController
     end
 
     def destroy
-      Rails.logger.info "entrooaoo"
       result = Detail.delete(params)
       if result == 200
         flash[:success] = "El detalle se elimino exitosamente."
