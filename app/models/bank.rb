@@ -40,21 +40,16 @@ class Bank
     end
   end
 
-  def self.update(id, data)
-    Rails.logger.info "el id es #{id.inspect}"
-
-    Rails.logger.info "la data es #{data.inspect}"
-    response = HTTParty.patch(
+  def self.delete(id)
+    response = HTTParty.delete(
       "#{base_uri}/banks/#{id}/",
-      body: data.to_json,
       headers: {
         'Content-Type' => 'application/json'
       }
     )
-    Rails.logger.info "el response code es #{response.inspect}"
     response.code
-  end  
-
+  end
+  
   def self.by_company_id(id)
     response = get("/banks/by_company_id/#{id}")
     response.parsed_response

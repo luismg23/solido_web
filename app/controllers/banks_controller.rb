@@ -30,7 +30,7 @@ class BanksController < ApplicationController
     result = Bank.create(params)
     if result == 200
       flash[:success] = "El banco se creó exitosamente."
-      redirect_to index
+      redirect_to banks_path
     else
       flash[:error] = "Hubo un error al crear el banco."
       render :new
@@ -43,12 +43,24 @@ class BanksController < ApplicationController
   end
 
   def update
-    Rails.logger.info "Los params son #{params}"
     @bank = Bank.by_id(params[:id])
     if Bank.update(@bank.IdInterno, params["bank"])
-      flash[:success] = "El banco se actualizo exitosamente."
+      flash[:success] = "El banco se actualizó exitosamente."
       redirect_to banks_path
     else
+      flash[:error] = "Hubo un error al actualizar el banco."
+      redirect_to banks_path
+    end
+  end
+
+  def destroy
+    @bank = Bank.by_id(params[:id])
+    result = Bank.delete(params[:id])
+    if result != 500
+      flash[:success] = "El banco se eliminó exitosamente."
+      redirect_to banks_path
+    else
+      flash[:error] = "Hubo un error al eliminar el banco. Cuenta con movimientos ligados"
       redirect_to banks_path
     end
   end

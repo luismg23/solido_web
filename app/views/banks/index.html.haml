@@ -10,6 +10,14 @@
 - if flash[:error].present?
   .alert.alert-danger= flash[:error]
 
+  :javascript
+    setTimeout(function() {
+      var messages = document.getElementsByClassName('alert');
+      for (var i = 0; i < messages.length; i++) {
+        messages[i].style.display = 'none';
+      }
+    }, 6000);
+
 .container.mx-auto.my-5.p-3.bg-light
   - if can_see?("create")
     %button#crearButton.btn.btn-primary{type: "button"} Crear
@@ -48,7 +56,7 @@
                     = link_to edit_bank_path(bank["IdInterno"]), class: 'text-warning text-decoration-none' do
                       %i.fa.fa-pencil
                     = content_tag :span, ' ', class: 'mx-2'
-                    = link_to budgetline_path(id: 1), class: 'text-danger text-decoration-none' do
-                      %i.fa.fa-trash.text-danger.icon-spacing.text-decoration-none
+                    = link_to bank_path(id: bank["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este banco?" } do
+                      %i.fa.fa-trash.text-danger
         .pagination-container
           = paginate @banks
