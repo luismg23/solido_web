@@ -40,6 +40,17 @@ class Bank
     end
   end
 
+  def self.update(id, data)
+    response = HTTParty.patch(
+      "#{base_uri}/banks/#{id}/",
+      body: data.to_json,
+      headers: {
+        'Content-Type' => 'application/json'
+      }
+    )
+    response.code
+  end
+
   def self.delete(id)
     response = HTTParty.delete(
       "#{base_uri}/banks/#{id}/",
@@ -49,7 +60,7 @@ class Bank
     )
     response.code
   end
-  
+
   def self.by_company_id(id)
     response = get("/banks/by_company_id/#{id}")
     response.parsed_response
