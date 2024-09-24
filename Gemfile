@@ -12,7 +12,7 @@ gem 'select2-rails', '~> 4.0'
 gem 'kaminari'
 gem 'dropzonejs-rails'
 gem "font-awesome-sass", "~> 6.5.1"
-gem 'devise', '~> 4.9.2'
+gem 'devise', '~> 4.9.4'
 gem "mysql2", '~> 0.5.6'
 gem 'chartkick'
 gem 'cable_ready'

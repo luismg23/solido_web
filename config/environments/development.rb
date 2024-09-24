@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_controller.default_url_options = {host: "localhost", port: 3000}
+  config.action_controller.default_url_options = {host: "127.0.0.1", port: 3001}
   config.session_store :cache_store
 
   # StimulusReflex does not support :cookie_store, and we recommend switching to Redis.
