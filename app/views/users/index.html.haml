@@ -1,14 +1,24 @@
 .text-center
-  %h1 Actualizar permisos del usuario
+  %h1 Usuarios
+
+.container.mx-auto.my-5.p-3.bg-light
+  = form_tag('/users/sign_up', method: :get) do
+    %button#do_backup.btn.btn-primary{type: "submit"}
+      Crear
 
 .container
   .row
     .col-xs-12
-      - @entities.each do |entity|
-        .card.mt-3.mx-auto
-          .card-body
-            .form-group
-              = render 'entities_form', entity: entity
-      
-      .col-xs-12.text-right
-        %button.btn.btn-primary(type="submit") Enviar
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %table.table.table-striped.table-bordered
+              %thead.thead-dark
+                %tr
+                  %th Email
+                  %th Fecha de Creación
+                %tbody
+                  - @users.each do |user|
+                    %tr
+                      %td= user["email"]
+                      %td= user["created_at"].strftime("%d/%m/%Y")

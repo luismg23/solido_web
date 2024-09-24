@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  match '/users',   to: 'users#index',   via: 'get'
   resources :banks
   resources :companies
   resources :suppliers
@@ -21,5 +22,4 @@ Rails.application.routes.draw do
   get 'budgets/:id/export', to: 'budgets#export', as: 'export_budget'
   get '/', to: redirect('home/index')
   resource :example, constraints: -> { Rails.env.development? }
-
 end
