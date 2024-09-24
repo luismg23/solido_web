@@ -77,7 +77,7 @@ class BanksController < ApplicationController
     end
   end
 
-  def can_see?(action)
-    User.actions_by_user("luismg", ENTITY_NAME).include?(action)
-  end
+  #def can_see?(action)
+  #  User.actions_by_user("luismg", ENTITY_NAME).include?(action)
+  #end
 end
