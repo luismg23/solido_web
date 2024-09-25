@@ -6,6 +6,6 @@
         %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" }, aria: { label: "Close" } }
           %span{ aria: { hidden: "true" } } &times;
       .modal-body
-        = render 'budgets/create_budgetline_form', budgetline: @budgetline, budget_id: @budget["IdInterno"]
+        = render 'budgets/create_budgetline_form', budgetline: @budgetline, budget_id: @budget.IdInterno
       .modal-footer
         %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" } } Cerrar

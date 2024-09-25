@@ -1,0 +1,65 @@
+.text-center.mt-5.mb-5
+  %h1 Editar Proveedor
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3.d-flex.justify-content-center
+            = form_for @supplier, url: suppliers_path(@supplier.IdInterno), method: :patch, html: { class: "form", style: "max-width: 600px; width: 100%; margin: 0 auto;" } do |f|
+              = f.hidden_field :IdInterno, value: @supplier.IdInterno
+
+              .form-group.mb-3
+                %strong= f.label :empresa_fk, "Empresa"
+                = f.select :empresa_fk, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
+
+              .form-group.mb-3
+                %strong= f.label :Nombre
+                = f.text_field :name, class: "form-control"
+                %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .form-group.mb-3
+                %strong= f.label :Email
+                = f.text_field :email, class: "form-control"
+                %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .form-group.mb-3
+                %strong= f.label :Persona
+                = f.text_field :persona, class: "form-control"
+                %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .form-group.mb-3
+                %strong= f.label :Calle
+                = f.text_field :calle, class: "form-control"
+                %p.danger-text#clave-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .form-group.mb-3
+                %strong= f.label :Colonia
+                = f.text_field :colonia, class: "form-control"
+
+              .form-group.mb-3
+                %strong= f.label :Ciudad
+                = f.text_field :ciudad, class: "form-control"
+
+              .form-group.mb-3
+                %strong= f.label :Estado
+                = f.text_field :estado, class: "form-control"
+
+              .form-group.mb-3
+                %strong= f.label :Telefono
+                = f.text_field :telefono, class: "form-control"
+                %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .form-group.mb-3
+                %strong= f.label :rfc, "RFC"
+                = f.text_field :rfc, class: "form-control"
+                %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .form-group.mb-3
+                %strong= f.label :Representante
+                = f.text_field :representante, class: "form-control"
+                %p.danger-text#telefono-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+
+              .actions.d-flex.justify-content-end
+                = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: true

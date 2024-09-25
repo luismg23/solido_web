@@ -3,8 +3,8 @@
 <br>
 .text-center
   %h1
-    = link_to details_budget_path(id: @budget["IdInterno"]) do
-      #{@budget['anio_presupuesto']} - #{@budget['nombre_presupuesto']}
+    = link_to details_budget_path(id: @budget.IdInterno) do
+      #{@budget.anio_presupuesto} - #{@budget.nombre_presupuesto}
 
 - if flash[:success].present?
   .alert.alert-success= flash[:success]
@@ -31,9 +31,9 @@
         = link_to "Exportar", export_budget_path(format: :csv), class: "btn btn-success", id: "loadButton", method: :get
   
   %div{style: "flex: 1; padding: 10px; max-width: 50%; margin-right: 200px"}
-    - presupuestado = @budget["monto_presupuestado"].to_f
-    - erogado = @budget["monto_erogado"].to_f
-    - por_erogar = @budget["monto_por_erogar"].to_f
+    - presupuestado = @budget.monto_presupuestado.to_f
+    - erogado = @budget.monto_erogado.to_f
+    - por_erogar = @budget.monto_por_erogar.to_f
     - total = presupuestado
     - total = 1 if total.zero?
 
@@ -67,19 +67,19 @@
                 %th Progreso
             %tbody
               %tr
-                %td= @budget["cve_presupuesto"]
-                %td= @budget["anio_presupuesto"]
-                %td= @budget["nombre_presupuesto"]
-                %td{class: numeric_class(@budget["monto_presupuestado"])}
-                  = number_to_currency(@budget["monto_presupuestado"])
-                %td{class: numeric_class(@budget["monto_erogado"])}
-                  = number_to_currency(@budget["monto_erogado"])
-                %td{class: numeric_class(@budget["monto_por_erogar"])}
-                  = number_to_currency(@budget["monto_por_erogar"])
+                %td= @budget.cve_presupuesto
+                %td= @budget.anio_presupuesto
+                %td= @budget.nombre_presupuesto
+                %td{class: numeric_class(@budget.monto_presupuestado)}
+                  = number_to_currency(@budget.monto_presupuestado)
+                %td{class: numeric_class(@budget.monto_erogado)}
+                  = number_to_currency(@budget.monto_erogado)
+                %td{class: numeric_class(@budget.monto_por_erogar)}
+                  = number_to_currency(@budget.monto_por_erogar)
                 %td
                   .progress
-                    - monto_presupuestado_budget = @budget["monto_presupuestado"]
-                    - monto_erogado_budget = @budget["monto_erogado"]
+                    - monto_presupuestado_budget = @budget.monto_presupuestado
+                    - monto_erogado_budget = @budget.monto_erogado
 
                     - if monto_presupuestado_budget.present? && monto_presupuestado_budget.to_f != 0
                       - progress_value = (monto_erogado_budget.to_f / monto_presupuestado_budget.to_f * 100).to_i

@@ -20,7 +20,7 @@
                   %td{class: numeric_class(cheque["Total"])}
                     = number_to_currency(cheque["Total"])
                   %td.text-center
-                    = link_to details_budget_path(cheque["IdInterno"]), class: 'text-success icon-spacing' do
+                    = link_to check_path(cheque["IdInterno"]), class: 'text-success icon-spacing' do
                       %i.fa.fa-eye
                   %td.text-center
                     %button.view-check-button.btn.btn-success{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{authorize_check_path(cheque["IdInterno"].to_s)}'"}

@@ -63,7 +63,23 @@ class Bank
 
   def self.by_company_id(id)
     response = get("/banks/by_company_id/#{id}")
-    response.parsed_response
+    if response.success?
+      bank_data_array = response.parsed_response
+  
+      bank_data_array.map do |bank_data|
+        Bank.new(
+          IdInterno: bank_data["IdInterno"],
+          cve_banco: bank_data["cve_banco"],
+          sucursal_banco: bank_data["sucursal_banco"],
+          direccion_banco: bank_data["direccion_banco"],
+          telefono_banco: bank_data["telefono_banco"],
+          nombre_banco: bank_data["nombre_banco"],
+          empresa_fk: bank_data["empresa_fk"]
+        )
+      end
+    else
+      []
+    end
   end
 
   def self.create(data)

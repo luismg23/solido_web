@@ -19,10 +19,13 @@ class BudgetlinesController < ApplicationController
     @budget = Budget.by_id(@budgetline['IdInternoPresupuesto'])
     @checkdetails = Detail.by_budgetline_id(@budgetline["IdInterno"])
 
+    Rails.logger.info "los checkdetails son #{@checkdetails}"
     detail_ids = @checkdetails.pluck("IdInternoCheque").uniq
     checks = detail_ids.map do |detail_id|
       Check.by_id(detail_id)
     end
+
+    Rails.logger.info "los checks son #{checks}"
     @checks = checks.sort_by  { |cheque| DateTime.parse(cheque["fecha_emision_cheque"]) }
     cheques_hash = @checks.each_with_object({}) do |cheque, hash|
       hash[cheque["IdInterno"]] = cheque
