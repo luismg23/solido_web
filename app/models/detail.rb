@@ -51,6 +51,25 @@ class Detail
       end
     end
 
+    def self.by_check_id(id)
+      response = get("/checkdetails/by_check_id/#{id}")
+      if response.success?
+        detail_data_array = response.parsed_response
+    
+        detail_data_array.map do |detail_data|
+          Detail.new(
+            importe_renglon: detail_data["importe_renglon"],
+            IdInterno: detail_data["IdInterno"],
+            IdInternoCheque: detail_data["IdInternoCheque"],
+            IdInternoRenglon: detail_data["IdInternoRenglon"],
+            description: detail_data["description"],
+            )
+        end
+      else
+        []
+      end
+    end
+
     def self.pending(id)
         response = get("/checks/pending/#{id}")
         response.parsed_response

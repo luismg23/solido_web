@@ -73,3 +73,30 @@
 %br
 .text-center
   %h1 Movimientos
+
+.container.mt-3
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+            %table.table.table-striped.table-bordered
+              %thead
+                %tr
+                  %th Renglón
+                  %th Importe
+                  %th Descripción
+                  %th Acciones
+              %tbody
+                - @details.each do |detail|
+                  %tr
+                    %td
+                      - budget_line = @budgetlines.find { |line| line["IdInterno"] == detail.IdInternoRenglon }
+                      - if budget_line
+                        = link_to "#{budget_line['cve_renglon_presupuestal']} - #{budget_line['nombre_renglon_presupuestal']}", budgetline_path(budget_line["IdInterno"])
+                    %td= detail.importe_renglon
+                    %td= detail.description
+                    %td
+                      =link_to edit_bank_path(budget_line["IdInterno"]), class: 'text-warning text-decoration-none' do
+                        %i.fa.fa-pencil
+

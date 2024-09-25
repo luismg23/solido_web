@@ -18,13 +18,19 @@ class ChecksController < ApplicationController
     
       @checks.reverse! if params[:direction] == 'desc'
     end
-      end
+  end
 
   def show
+    Rails.logger.info "al show"
     @payment_methods = PAYMENT_METHODS
     @check = Check.by_id(params[:id])
     @budget = Budget.by_id(@check.IdInternoPresupuesto)
     @supplier = Supplier.by_id(@check.IdProveedorFK)
+    @details = Detail.by_check_id(@check.IdInterno)
+    Rails.logger.info "los details son #{@details.inspect}"
+    @budgetlines = @details.map do |detail|
+      Budgetline.by_id(detail.IdInternoRenglon)
+    end
   end
 
   def authorize
