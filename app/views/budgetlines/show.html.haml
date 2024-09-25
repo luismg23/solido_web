@@ -3,8 +3,8 @@
 <br>
 .text-center
   %h1
-    = link_to details_budget_path(id: @budget["IdInterno"]) do
-      #{@budget['anio_presupuesto']} - #{@budget['nombre_presupuesto']}
+    = link_to details_budget_path(id: @budget.IdInterno) do
+      #{@budget.anio_presupuesto} - #{@budget.nombre_presupuesto}
   %br
   %h1
     = link_to budgetline_path(id: @budgetline["IdInterno"]) do

@@ -1,0 +1,75 @@
+= javascript_include_tag "application", defer: true
+
+<br>
+.text-center
+  %h1
+    = link_to details_budget_path(id: @budget.IdInterno) do
+      #{@budget.anio_presupuesto} - #{@budget.nombre_presupuesto}
+  %br
+  %h1
+
+.container.mx-auto.my-5.p-3.bg-light
+  - if can_create?(current_profile.rol)
+    %button#crearButton.btn.btn-primary{type: "button"} Editar
+  - if can_approve?(current_profile.rol)
+    - if @check.autorizado == 0
+      %button.view-check-button.btn.btn-success{type: "button", "data-check-id": @check.IdInterno, onclick: "window.location.href='#{authorize_check_path(@check.IdInterno.to_s)}'"}
+        Aprobar
+    - else
+      %button.view-check-button.btn.btn-danger{type: "button", "data-check-id": @check.IdInterno, onclick: "window.location.href='#{deauthorize_check_path(@check.IdInterno.to_s)}'"}
+        Desaprobar
+
+
+.text-center
+  %h1 Transacción
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Numero
+                %th Concepto
+                %th Status
+                %th Autorizado
+            %tbody
+              %tr
+                %td= @check.num_cheque
+                %td= @check.concepto_cheque
+                %td.text-center= @check.estatus_pago_cheque
+                %td.text-center
+                  - if @check.autorizado == 1
+                    %i.fa.fa-check(style="color: green")
+                  - else
+                    %i.fa.fa-times(style="color: red")
+
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Fecha Emisión
+                %th Tipo de Transacción
+                %th Total
+                %th Proveedor
+            %tbody
+              %tr
+                %td= @check.fecha_emision_cheque.present? ? Time.parse(@check.fecha_emision_cheque).strftime("%d/%m/%Y") : "N/A"
+                %td= @payment_methods[@check.TransaccionType]
+                %td{class: numeric_class(@check.Total)}
+                  = number_to_currency(@check.Total)
+                %td
+                  = link_to @supplier.name, supplier_path(@supplier.IdInterno)
+%br
+.text-center
+  %h1 Movimientos

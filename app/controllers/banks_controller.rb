@@ -1,13 +1,8 @@
 class BanksController < ApplicationController
   include RolesHelper
 
-  ENTITY_NAME = "bancos".freeze
-
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-
-  #skip_before_action :verify_authenticity_token, only: [:upload]
-  helper_method :can_see?
 
   def index
     @companies = Company.all
@@ -78,8 +73,4 @@ class BanksController < ApplicationController
       render json: { success: false, message: "No se proporcionó ningún archivo o el archivo no es válido" }
     end
   end
-
-  #def can_see?(action)
-  #  User.actions_by_user("luismg", ENTITY_NAME).include?(action)
-  #end
 end

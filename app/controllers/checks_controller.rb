@@ -1,4 +1,19 @@
-class ChecksController < ApplicationController  
+class ChecksController < ApplicationController 
+  PAYMENT_METHODS = {
+    1 => 'Cheque',
+    2 => 'Transferencia',
+    3 => 'Efectivo',
+    4 => 'Tarjeta'
+  }
+
+  def show
+    @payment_methods = PAYMENT_METHODS
+    @check = Check.by_id(params[:id])
+    @budget = Budget.by_id(@check.IdInternoPresupuesto)
+    @supplier = Supplier.by_id(@check.IdProveedorFK)
+    Rails.logger.info "el supplier es #{@supplier.inspect}"
+  end
+
   def authorize
     result = Check.authorize(params)
 

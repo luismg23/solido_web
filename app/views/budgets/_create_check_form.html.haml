@@ -7,7 +7,7 @@
 
   .form-group.mb-3
     %strong= f.label :Banco
-    = f.select :IdInternoBanco, @banks.map{ |bank| [bank["sucursal_banco"], bank["IdInterno"]] }, {}, class: "form-control"
+    = f.select :IdInternoBanco, @banks.map{ |bank| [bank.sucursal_banco, bank.IdInterno] }, {}, class: "form-control"
 
   .form-group.mb-3
     %strong= f.label :Proveedor

@@ -42,8 +42,9 @@
                   %td= company["Telefono"]
                   %td= company["RFC"]
                   %td.text-center
-                    = link_to budgetline_path(id: 1) do
-                      %i.fa.fa-pencil.text-warning.text-decoration-none
+                    - if can_edit?(current_profile.rol)
+                      = link_to edit_company_path(company["IdInterno"]), class: 'text-warning text-decoration-none' do
+                        %i.fa.fa-pencil
                     = content_tag :span, ' ', class: 'mx-2'
                     = link_to budgetline_path(id: 1) do
                       %i.fa.fa-trash.text-danger.text-decoration-none

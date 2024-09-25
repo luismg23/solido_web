@@ -29,6 +29,11 @@ class CompaniesController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @company = Company.by_id(params[:id])
+    Rails.logger.info "el company es #{@company.inspect}"
+  end
   
   private
 

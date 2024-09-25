@@ -21,7 +21,7 @@
 
   .form-group.mb-3
     %strong= f.label :Empresa
-    = f.select :empresaid, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
+    = f.select :empresa_fk, @companies.map{ |company| [company["Nombre"], company["IdInterno"]] }, {}, class: "form-control"
 
   .actions.d-flex.justify-content-end
     = f.submit 'Guardar', class: "btn btn-success", id: "saveButton", disabled: true
