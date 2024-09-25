@@ -32,7 +32,6 @@ class Check
   def self.by_id(id)
     response = get("/checks/by_id/#{id}")
     if response.success?
-      Rails.logger.info response.parsed_response
       checks_data = response.parsed_response
 
       Check.new(
@@ -55,7 +54,28 @@ class Check
 
   def self.by_budget_id(id)
     response = get("/checks/by_budget_id/#{id}")
-    response.parsed_response
+
+    if response.success?
+      check_data_array = response.parsed_response
+  
+      check_data_array.map do |check_data|
+        Check.new(
+          fecha_emision_cheque: check_data["fecha_emision_cheque"],
+          concepto_cheque: check_data["concepto_cheque"],
+          estatus_pago_cheque: check_data["estatus_pago_cheque"],
+          autorizado: check_data["autorizado"],
+          IdInterno: check_data["IdInterno"],
+          IdInternoBanco: check_data["IdInternoBanco"],
+          IdInternoPresupuesto: check_data["IdInternoPresupuesto"],
+          Total: check_data["Total"],
+          TransaccionType: check_data["TransaccionType"],
+          num_cheque: check_data["num_cheque"],
+          IdProveedorFK: check_data["IdProveedorFK"]
+          )
+      end
+    else
+      []
+    end
   end
 
   def self.pending(id)

@@ -2,7 +2,7 @@
   .modal-dialog{ role: "document" }
     .modal-content
       .modal-header
-        %h5.modal-title Cheques pendientes de aprobación
+        %h5.modal-title Transacciones pendientes de aprobación
         %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" }, aria: { label: "Close" } }
           %span{ aria: { hidden: "true" } } &times;
       .modal-body
@@ -11,8 +11,7 @@
             %tr
               %th Concepto
               %th Total
-              %th Ver
-              %th Aprobar
+              %th Acciones
             %tbody
               - @pending.each do |cheque|
                 %tr
@@ -22,9 +21,6 @@
                   %td.text-center
                     = link_to check_path(cheque["IdInterno"]), class: 'text-success icon-spacing' do
                       %i.fa.fa-eye
-                  %td.text-center
-                    %button.view-check-button.btn.btn-success{type: "button", "data-check-id": cheque["IdInterno"], onclick: "window.location.href='#{authorize_check_path(cheque["IdInterno"].to_s)}'"}
-                      Aprobar
 
       .modal-footer
         %button.btn.btn-secondary{ type: "button", data: { dismiss: "modal" } } Cerrar

@@ -26,7 +26,7 @@
       %label
         Visualizar
         %button#budget_view_budgetline.btn.btn-primary{type: "button"} Renglones
-        %button#budget_view_check.btn.btn-primary{type: "button"} Transacciones
+        = link_to 'Transacciones', details_check_path(@budget.IdInterno), class: 'btn btn-primary', id: 'checks_details'
         %button#budget_view_details.btn.btn-primary{type: "button"} Movimientos
         = link_to "Exportar", export_budget_path(format: :csv), class: "btn btn-success", id: "loadButton", method: :get
   
@@ -91,13 +91,13 @@
   %table.table.text-center
     %thead
       %tr
-        %th Total de renglones
-        %th Movimientos Pendientes
+        %th Total de Renglónes
+        %th Transacciones Pendientes
         %th Monto sin asignar
     %tbody
       %tr
         %td= @budgetlines.size
-        %td= link_to "#{@pending.size} movimientos", "#", id: "link_to_pendingModal"
+        %td= link_to "#{@pending.size} transacciones", "#", id: "link_to_pendingModal"
         %td{class: numeric_class(@amount_available)}
           = number_to_currency(@amount_available)
 

@@ -50,8 +50,6 @@ class BudgetsController < ApplicationController
     @budget = Budget.by_id(params[:id])
     @budgetlines = Budgetline.by_budget_id(params[:id])
     @banks = Bank.by_company_id(@budget.empresa_fk)
-    Rails.logger.info "daaa #{@budget.empresa_fk}"
-    Rails.logger.info "los banks son #{@banks}"
 
     @suppliers = Supplier.by_company_id(@budget.empresa_fk)
     @pending = Check.pending(params[:id])

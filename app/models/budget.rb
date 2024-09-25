@@ -36,7 +36,7 @@ class Budget
     response = get("/budgets/by_id/#{id}")
     if response.success?
       budget_data = response.parsed_response
-      puts response.parsed_response
+
       Budget.new(
         IdInterno: budget_data["IdInterno"],
         cve_presupuesto: budget_data["cve_presupuesto"],

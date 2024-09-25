@@ -15,7 +15,11 @@ Rails.application.routes.draw do
       get 'details'
     end
   end
-  resources :checks
+  resources :checks do
+    member do
+      get 'details'
+    end
+  end
   resources :details
   resources :searchs
   get '/checks/authorize/:id', to: 'checks#authorize', as: 'authorize_check'

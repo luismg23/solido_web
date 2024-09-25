@@ -1,0 +1,52 @@
+%br
+.text-center
+  %h1
+    = link_to details_budget_path(id: @budget.IdInterno) do
+      #{@budget.anio_presupuesto} - #{@budget.nombre_presupuesto}
+
+%br
+.text-center
+  %h1 Transacciones
+
+%br
+.container
+  .row
+    .col-xs-12
+      .custom-table-container
+        .tabla-container
+          %div.input-group.mb-3
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th
+                  = link_to 'Clave', details_check_path(sort: 'num_cheque', direction: params[:direction] == 'asc' ? 'desc' : 'asc')
+                %th
+                  = link_to 'Nombre', details_check_path(sort: 'concepto_cheque', direction: params[:direction] == 'asc' ? 'desc' : 'asc')
+                %th
+                  = link_to 'Status', details_check_path(sort: 'estatus_pago_cheque', direction: params[:direction] == 'asc' ? 'desc' : 'asc')
+                %th
+                  = link_to 'Tipo de Transacción', details_check_path(sort: 'estatus_pago_cheque', direction: params[:direction] == 'asc' ? 'desc' : 'asc')
+                %th
+                  = link_to 'Total', details_check_path(sort: 'Total', direction: params[:direction] == 'asc' ? 'desc' : 'asc')
+                %th
+                  = link_to 'Autorizado', details_check_path(sort: 'autorizado', direction: params[:direction] == 'asc' ? 'desc' : 'asc')
+                %th Acciones
+            %tbody
+              - @checks.each do |check|
+                %tr
+                  %td= check.num_cheque
+                  %td= check.concepto_cheque
+                  %td= check.estatus_pago_cheque
+                  %td= @payment_methods[check.TransaccionType]
+                  %td{class: numeric_class(check.Total)}
+                    = number_to_currency(check.Total)
+                  %td.text-center
+                    - if check.autorizado == 1
+                      %i.fa.fa-check(style="color: green")
+                    - else
+                      %i.fa.fa-times(style="color: red")
+                  %td
+                    = link_to check_path(check.IdInterno), class: 'text-success icon-spacing' do
+                      %i.fa.fa-eye
+
+

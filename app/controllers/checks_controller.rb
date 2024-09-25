@@ -6,19 +6,32 @@ class ChecksController < ApplicationController
     4 => 'Tarjeta'
   }
 
+  def details
+    @payment_methods = PAYMENT_METHODS
+    @budget = Budget.by_id(params[:id])
+    @checks = Check.by_budget_id(@budget.IdInterno)
+    if params[:sort].present? && params[:direction].present?
+      @checks = @checks.sort_by do |check|
+        value = check.send(params[:sort])
+        value.nil? ? '' : value
+      end
+    
+      @checks.reverse! if params[:direction] == 'desc'
+    end
+      end
+
   def show
     @payment_methods = PAYMENT_METHODS
     @check = Check.by_id(params[:id])
     @budget = Budget.by_id(@check.IdInternoPresupuesto)
     @supplier = Supplier.by_id(@check.IdProveedorFK)
-    Rails.logger.info "el supplier es #{@supplier.inspect}"
   end
 
   def authorize
     result = Check.authorize(params)
 
     if result == 200
-      flash[:success] = "El cheque aprobo correctamente."
+      flash[:success] = "El cheque aprobó correctamente."
       redirect_to request.referrer || root_path
     else
       flash[:error] = "Hubo un error al aprobar el cheque."
@@ -30,7 +43,7 @@ class ChecksController < ApplicationController
     result = Check.deauthorize(params)
 
     if result == 200
-      flash[:success] = "El cheque desaprobo correctamente."
+      flash[:success] = "El cheque desaprobó correctamente."
       redirect_to request.referrer || root_path
     else
       flash[:error] = "Hubo un error al desaprobar el cheque."
@@ -38,27 +51,27 @@ class ChecksController < ApplicationController
     end
   end
 
+  def create
+    result = Check.create(params)
 
-    def create
-      result = Check.create(params)
-      if result == 200
-        flash[:success] = "El cheque se creó exitosamente."
-        redirect_to request.referrer || root_path
-      else
-        flash[:error] = "Hubo un error al crear el cheque."
-        render :new
-      end
+    if result == 200
+      flash[:success] = "El cheque se creó exitosamente."
+      redirect_to request.referrer || root_path
+    else
+      flash[:error] = "Hubo un error al crear el cheque."
+      render :new
     end
+  end
 
-    def destroy
-      result = Check.delete(params)
-      if result == 200
-        flash[:success] = "La transacción se elimino exitosamente."
-        redirect_to request.referrer || root_path
-      else
-        flash[:error] = "Hubo un error al eliminar la transacción."
-        redirect_to request.referrer || root_path
-      end
+  def destroy
+    result = Check.delete(params)
+
+    if result == 200
+      flash[:success] = "La transacción se eliminó exitosamente."
+      redirect_to request.referrer || root_path
+    else
+      flash[:error] = "Hubo un error al eliminar la transacción."
+      redirect_to request.referrer || root_path
     end
-
+  end
 end
