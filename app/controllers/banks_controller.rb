@@ -1,8 +1,10 @@
 class BanksController < ApplicationController
+  include RolesHelper
+
   ENTITY_NAME = "bancos".freeze
 
   protect_from_forgery with: :exception
-  #before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!
 
   #skip_before_action :verify_authenticity_token, only: [:upload]
   helper_method :can_see?
