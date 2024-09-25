@@ -1,6 +1,6 @@
 = form_for detail, html: { class: "form" } do |f|
   .form-group.mb-3
-    %strong= f.label :"Cheques pendientes de aprobación"
+    %strong= f.label :"Transacciones pendientes de aprobación"
     = f.select :IdInternoCheque, pending_checks.map{ |pending_check| [pending_check.concepto_cheque, pending_check.IdInterno] }, {}, class: "form-control"
 
   .form-group.mb-3
