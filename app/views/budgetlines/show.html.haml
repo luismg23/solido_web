@@ -40,7 +40,6 @@
                   .progress
                     - monto_presupuestado_budget = @budgetline["monto_presupuestado"]
                     - monto_erogado_budget = @budgetline["monto_erogado"]
-
                     - if monto_presupuestado_budget.present? && monto_presupuestado_budget.to_f != 0
                       - progress_value = (monto_erogado_budget.to_f / monto_presupuestado_budget.to_f * 100).to_i
                       .progress-bar{role: "progressbar", style: "width: #{progress_value}%", "aria-valuenow": progress_value, "aria-valuemin": 0, "aria-valuemax": 100}
@@ -62,19 +61,27 @@
             %table.table.table-striped.table-bordered
               %thead
                 %tr
+                  %th Banco
+                  %th Cheque
                   %th Fecha de emisión
-                  %th Transacción
-                  %th Movimiento
+                  %th Descripción
                   %th Total
+                  %th Status
                   %th Acciones
               %tbody
                 - @merged_details.each do |detail|
                   %tr
-                    %td= formato_fecha_espanol(DateTime.parse(detail["fecha_emision_cheque"]))
-                    %td= detail["concepto_cheque"]
-                    %td= detail["description"]
-                    %td{class: numeric_class(detail["importe_renglon"])}
-                      = number_to_currency(detail["importe_renglon"])
+                    %td= link_to (@banks.find { |bank| bank["IdInterno"] == detail[:id_interno_banco] }["nombre_banco"] rescue "Banco no encontrado"), bank_path(detail[:id_interno_banco])
+                    %td= link_to detail[:concepto_cheque], check_path(detail[:id_interno_cheque])
+                    %td= detail[:fecha_emision_cheque].present? ? formato_fecha_espanol(DateTime.parse(detail[:fecha_emision_cheque])) : "N/A"
+                    %td= detail[:description]
+                    %td{class: numeric_class(detail[:importe_renglon])}
+                      = number_to_currency(detail[:importe_renglon])
+                    %td.text-center
+                      - if detail[:autorizado] == 1
+                        %i.fa.fa-check(style="color: green")
+                      - else
+                        %i.fa.fa-times(style="color: red")
                     %td.text-center
                       = link_to checks_path(id: detail["IdInterno"]) do
                         %i.fa.fa-eye.text-success.text-decoration-none

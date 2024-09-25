@@ -29,7 +29,6 @@ class Supplier
       response = get("/suppliers/by_id/#{id}")
       if response.success?
         supplier_data = response.parsed_response
-        Rails.logger.info "el response es #{response.parsed_response.inspect}"
         Supplier.new(
           IdInterno: supplier_data["IdInterno"],
           name: supplier_data["Nombre"],

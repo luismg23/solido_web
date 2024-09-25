@@ -7,7 +7,6 @@ class BulkUploadController < ApplicationController
 
     if uploaded_file
       CSV.foreach(uploaded_file.path, headers: true) do |row|
-        Rails.logger.info row
       end
       flash[:notice] = "Archivo CSV subido y procesado con éxito."
     else
