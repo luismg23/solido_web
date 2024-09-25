@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :budgetlines
   resources :backups
   resources :home
+  resources :bulk_upload
   resources :budgets do
     member do
       get 'details'
@@ -22,4 +23,6 @@ Rails.application.routes.draw do
   get 'budgets/:id/export', to: 'budgets#export', as: 'export_budget'
   get '/', to: redirect('home/index')
   resource :example, constraints: -> { Rails.env.development? }
+  post 'bulkupload', to: 'bulk_upload#create', as: :bulkupload
+  get 'bulkupload/download_layout', to: 'bulk_upload#download_layout', as: :download_layout
 end
