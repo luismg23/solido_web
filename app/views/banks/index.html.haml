@@ -19,7 +19,8 @@
     }, 6000);
 
 .container.mx-auto.my-5.p-3.bg-light
-  %button#crearButton.btn.btn-primary{type: "button"} Crear
+  - if can_create?(current_profile.rol)
+    %button#crearButton.btn.btn-primary{type: "button"} Crear
   
 .container
   .row
@@ -52,10 +53,12 @@
                   %td= bank["telefono_banco"]
                   %td= bank["nombre_banco"]
                   %td.text-center
-                    = link_to edit_bank_path(bank["IdInterno"]), class: 'text-warning text-decoration-none' do
-                      %i.fa.fa-pencil
+                    - if can_edit?(current_profile.rol)
+                      = link_to edit_bank_path(bank["IdInterno"]), class: 'text-warning text-decoration-none' do
+                        %i.fa.fa-pencil
                     = content_tag :span, ' ', class: 'mx-2'
-                    = link_to bank_path(id: bank["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este banco?" } do
-                      %i.fa.fa-trash.text-danger
+                    - if can_delete?(current_profile.rol)
+                      = link_to bank_path(id: bank["IdInterno"]), method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este banco?" } do
+                        %i.fa.fa-trash.text-danger
         .pagination-container
           = paginate @banks

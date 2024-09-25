@@ -3,8 +3,9 @@
 
 .container.mx-auto.my-5.p-3.bg-light
   = form_tag('/users/sign_up', method: :get) do
-    %button#do_backup.btn.btn-primary{type: "submit"}
-      Crear
+    - if can_create?(current_profile.rol)
+      %button#do_backup.btn.btn-primary{type: "submit"}
+        Crear
 
 .container
   .row
