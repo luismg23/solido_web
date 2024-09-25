@@ -1,0 +1,19 @@
+.text-center
+  %h1 Carga Masiva
+
+- if flash[:success].present?
+  .alert.alert-success= flash[:success]
+
+- if flash[:error].present?
+  .alert.alert-danger= flash[:error]
+
+.container.mx-auto.my-5.p-3.bg-light
+  = form_with url: bulkupload_path, method: :post, multipart: true, local: true do |form|
+    .form-group
+      = form.label :csv_file, 'Selecciona un archivo CSV', class: 'form-label'
+      = form.file_field :csv_file, class: 'form-control'
+  
+    = form.submit 'Subir CSV', class: 'btn btn-primary'
+
+.container.mx-auto.my-5.p-3.bg-light
+  = link_to 'Descargar Layout', download_layout_path, class: 'btn btn-success', role: 'button'
