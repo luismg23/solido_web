@@ -22,6 +22,14 @@
             %a.nav-link{href: "/users/"} Usuarios
 
       - if user_signed_in?
-        = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger my-2 my-sm-0'
+        .nav-item.dropdown
+          = link_to '#', class: 'text-secondary nav-link dropdown-toggle', id: 'navbarDropdown', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } do
+            %i.fa.fa-user-circle
+            = "#{@current_profile.firstname} #{@current_profile.lastname}"
+          .dropdown-menu{ aria: { labelledby: 'navbarDropdown' } }
+            = link_to "Mi Perfil", destroy_user_session_path, class: 'dropdown-item'
+            = link_to "Configuración", destroy_user_session_path, class: 'dropdown-item'
+            .dropdown-divider
+            = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'dropdown-item text-danger'
       - else
         = link_to "Iniciar Sesión", new_user_session_path, class: 'nav-link btn'
