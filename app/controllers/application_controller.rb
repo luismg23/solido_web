@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+  include CableReady::Broadcaster
 
-include CableReady::Broadcaster
-helper_method :current_user
-helper_method :current_profile
+  before_action :current_user, :current_profile
+  before_action :authenticate_user!
+  helper_method :current_user
+  helper_method :current_profile
 
   def current_user
     @current_user ||= warden.user(:user) if warden.user(:user)

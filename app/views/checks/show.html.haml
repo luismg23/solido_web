@@ -94,7 +94,8 @@
                       - budget_line = @budgetlines.find { |line| line["IdInterno"] == detail.IdInternoRenglon }
                       - if budget_line
                         = link_to "#{budget_line['cve_renglon_presupuestal']} - #{budget_line['nombre_renglon_presupuestal']}", budgetline_path(budget_line["IdInterno"])
-                    %td= detail.importe_renglon
+                    %td{class: numeric_class(detail.importe_renglon)}
+                      = number_to_currency(detail.importe_renglon)
                     %td= detail.description
                     %td
                       =link_to edit_bank_path(budget_line["IdInterno"]), class: 'text-warning text-decoration-none' do
