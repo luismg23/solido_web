@@ -25,7 +25,7 @@
         .nav-item.dropdown
           = link_to '#', class: 'text-secondary nav-link dropdown-toggle', id: 'navbarDropdown', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } do
             %i.fa.fa-user-circle
-            = "#{@current_profile.firstname} #{@current_profile.lastname}"
+            @current_profile ? "#{@current_profile.firstname} #{@current_profile.lastname}" : ''
           .dropdown-menu{ aria: { labelledby: 'navbarDropdown' } }
             = link_to "Mi Perfil", destroy_user_session_path, class: 'dropdown-item'
             = link_to "Configuración", destroy_user_session_path, class: 'dropdown-item'
