@@ -1,0 +1,26 @@
+%br
+%br
+%br
+
+.container
+  .row
+    .col-xs-12
+      = form_for @profile do |f|
+        .form-group.col-md-5.mx-auto
+          = f.label :email
+          = f.text_field :email, value: params[:email], readonly: true, class: 'form-control'
+
+        .form-group.col-md-5.mx-auto
+          = f.label :Nombre
+          = f.text_field :firstname, value: @profile.firstname, class: 'form-control'
+
+        .form-group.col-md-5.mx-auto
+          = f.label :Apellido
+          = f.text_field :lastname, value: @profile.lastname, class: 'form-control'
+
+        .form-group.col-md-5.mx-auto
+          = f.label :rol
+          = f.select :rol, Profile.rols.keys.map { |role| [role.humanize, role] }, { selected: @profile.rol }, class: 'form-control'
+
+        .form-group.text-center
+          = f.submit 'Guardar', class: 'btn btn-primary'
