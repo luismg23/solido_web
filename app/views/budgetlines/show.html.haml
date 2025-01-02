@@ -63,7 +63,6 @@
                 %tr
                   %th Banco
                   %th Transacción
-                  %th Fecha de emisión
                   %th Descripción
                   %th Total
                   %th Status
@@ -73,7 +72,6 @@
                   %tr
                     %td= link_to (@banks.find { |bank| bank["IdInterno"] == detail[:id_interno_banco] }["nombre_banco"] rescue "Banco no encontrado"), bank_path(detail[:id_interno_banco])
                     %td= link_to "#{detail[:num_cheque]} - #{detail[:concepto_cheque]}", check_path(detail[:id_interno_cheque])
-                    %td= detail[:fecha_emision_cheque].present? ? formato_fecha_espanol(DateTime.parse(detail[:fecha_emision_cheque])) : "N/A"
                     %td= detail[:description]
                     %td{class: numeric_class(detail[:importe_renglon])}
                       = number_to_currency(detail[:importe_renglon])

@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_profile
-    @current_profile ||= Profile.find_by(email: current_user.email)
+    @current_profile ||= Profile.find_by(email: current_user.email) if current_user
   end
 end

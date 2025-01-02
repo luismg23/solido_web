@@ -35,6 +35,29 @@ class SuppliersController < ApplicationController
     end
   end
 
+  def update
+    @supplier = Supplier.by_id(params[:id])
+    if Supplier.update(@supplier.IdInterno, params["supplier"])
+      flash[:success] = "El proveedor se actualizó exitosamente."
+      redirect_to suppliers_path
+    else
+      flash[:error] = "Hubo un error al actualizar el proveedor."
+      redirect_to suppliers_path
+    end
+  end
+
+  def destroy
+    @supplier = Supplier.by_id(params[:id])
+    result = Supplier.delete(params[:id])
+    if result != 500
+      flash[:success] = "El proveedor se eliminó exitosamente."
+      redirect_to suppliers_path
+    else
+      flash[:error] = "Hubo un error al eliminar el proveedor. Cuenta con movimientos ligados"
+      redirect_to suppliers_path
+    end
+  end
+
   def edit
     @companies = Company.all
     @supplier = Supplier.by_id(params[:id])

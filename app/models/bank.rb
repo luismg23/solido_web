@@ -12,7 +12,6 @@ class Bank
     @nombre_banco = attributes[:nombre_banco]
     @IdInterno = attributes[:IdInterno]
     @empresa_fk = attributes[:empresa_fk]
-
   end
 
   def self.all(page = 1, per_page = 10)
@@ -41,6 +40,7 @@ class Bank
   end
 
   def self.update(id, data)
+    Rails.logger.info "la data es #{data.to_json}"
     response = HTTParty.patch(
       "#{base_uri}/banks/#{id}/",
       body: data.to_json,

@@ -32,6 +32,11 @@ class Budgetline
       response.parsed_response
     end
 
+    def self.by_name(name)
+      response = get("/budgetlines/by_name/#{name}")
+      response.parsed_response
+    end
+
     def self.delete(id)
       response = get("/budgetlines/delete/#{id["id"]}")
       response.code
