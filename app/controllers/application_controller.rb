@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
       end    
     end
 
-    @current_profile ||= Profile.find_by(email: current_user.email)
+    @current_profile ||= Profile.find_by(email: current_user.email) if current_user
   
     if @current_profile.nil? && request.path != new_profile_path
-      redirect_to new_profile_path(email: current_user.email)
+      redirect_to new_profile_path(email: current_user.email) if current_user
       return
     end
   

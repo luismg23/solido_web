@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
   match '/users',   to: 'users#index',   via: 'get'
   resources :banks
   resources :companies
@@ -11,6 +14,14 @@ Rails.application.routes.draw do
   resources :home
   resources :bulk_upload
   resources :profiles
+  resources :users do
+    member do
+      get 'details'
+      get :edit_password
+      put :update_password  
+    end
+  end
+    
   resources :budgets do
     member do
       get 'details'

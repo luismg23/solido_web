@@ -1,0 +1,31 @@
+%br
+%br
+
+.container
+  .row
+    .col-md-6.offset-md-3
+      %h1.text-center Cambiar contraseña
+      %br/
+      %p.text-center.text-muted
+        Cambiarás la contraseña del usuario con correo:
+        %strong= @user.email
+      %br/
+      = form_for(@user, url: password_path(@user), html: { method: :put, class: "form-horizontal" }) do |f|
+        = render "devise/shared/error_messages", resource: @user
+        = f.hidden_field :reset_password_token, value: params[:reset_password_token] || @user.reset_password_token
+        = f.hidden_field :id, value: @user.id
+        .form-group
+          = f.label :password, "Nueva contraseña", class: "col-form-label"
+          %br/
+          - if @minimum_password_length
+            %em.text-muted (#{@minimum_password_length} caracteres como mínimo)
+            %br/
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"
+
+        .form-group
+          = f.label :password_confirmation, "Confirmar nueva contraseña", class: "col-form-label"
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+
+        .form-group.text-center
+          = f.submit "Cambiar contraseña", class: "btn btn-primary btn-lg"
