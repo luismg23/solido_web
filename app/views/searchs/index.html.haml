@@ -27,6 +27,28 @@
 .container.mx-auto.my-5.p-3.bg-light
   %h1
     Renglónes 
+  .container
+    .row
+      .col-xs-12
+        .custom-table-container
+          .tabla-container
+            %div.input-group.mb-3
+
+          %table.table.table-striped.table-bordered
+            %thead.thead-dark
+              %tr
+                %th Nombre
+                %th Año
+                %th Acciones
+
+            %tbody
+              - @filtered_budgetlines.each do |budgetline|
+                %tr
+                  %td= budgetline["nombre_renglon_presupuestal"]
+                  %td= budgetline["monto_presupuestado"]
+                  %td.text-center
+                    = link_to budgetline_path(budgetline["IdInterno"]) do
+                      %i.fa.fa-eye.text-success.text-decoration-none
 
 
 .container.mx-auto.my-5.p-3.bg-light

@@ -1,15 +1,15 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light{ style: "min-width: 200px;" }
   .container
     %a.navbar-brand{href: "/home/index"} SAP
-    %button.navbar-toggler{type: "button", data: {toggle: "collapse"}, data_target: "#navbarNav", aria_controls: "navbarNav", aria_expanded: "false", aria_label: "Toggle navigation"}
+    %button.navbar-toggler{"type" => "button", "data-toggle" => "collapse", "data-target" => "#navbarNav", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
       %span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         - if user_signed_in?
           %li.nav-item
-            %a.nav-link{href: "/banks/"} Bancos
-          %li.nav-item
             %a.nav-link{href: "/companies/"} Empresas
+          %li.nav-item
+            %a.nav-link{href: "/banks/"} Bancos
           %li.nav-item
             %a.nav-link{href: "/suppliers/"} Proveedores
           %li.nav-item

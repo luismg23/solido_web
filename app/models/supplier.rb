@@ -65,5 +65,26 @@ class Supplier
     
       response.parsed_response
     end  
-  end
+
+    def self.update(id, data)
+      response = HTTParty.patch(
+        "#{base_uri}/suppliers/#{id}/",
+        body: data.to_json,
+        headers: {
+          'Content-Type' => 'application/json'
+        }
+      )
+      Rails.logger.info "response: #{response.inspect}"
+      response.code
+    end
   
+    def self.delete(id)
+      response = HTTParty.delete(
+        "#{base_uri}/suppliers/#{id}/",
+        headers: {
+          'Content-Type' => 'application/json'
+        }
+      )
+      response.code
+    end
+  end
