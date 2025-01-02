@@ -11,6 +11,22 @@ class ApplicationController < ActionController::Base
   end
 
   def current_profile
-    @current_profile ||= Profile.find_by(email: current_user.email) if current_user
+    if params["profile"]
+      @profile = Profile.new(params["profile"].permit(:email, :firstname, :lastname, :rol))
+      if @profile.save
+        redirect_to '/'
+      else
+        render new_profile_path(email: current_user.email)
+      end    
+    end
+
+    @current_profile ||= Profile.find_by(email: current_user.email)
+  
+    if @current_profile.nil? && request.path != new_profile_path
+      redirect_to new_profile_path(email: current_user.email)
+      return
+    end
+  
+    @current_profile
   end
 end

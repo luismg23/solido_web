@@ -40,7 +40,6 @@ class Bank
   end
 
   def self.update(id, data)
-    Rails.logger.info "la data es #{data.to_json}"
     response = HTTParty.patch(
       "#{base_uri}/banks/#{id}/",
       body: data.to_json,

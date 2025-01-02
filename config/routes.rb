@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :backups
   resources :home
   resources :bulk_upload
+  resources :profiles
   resources :budgets do
     member do
       get 'details'
