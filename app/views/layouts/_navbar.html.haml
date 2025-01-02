@@ -27,7 +27,7 @@
             %i.fa.fa-user-circle
             = @current_profile ? "#{@current_profile.firstname} #{@current_profile.lastname}" : ''
           .dropdown-menu{ aria: { labelledby: 'navbarDropdown' } }
-            = link_to "Mi Perfil", destroy_user_session_path, class: 'dropdown-item'
+            = link_to "Mi Perfil", details_user_path(id: @current_user.id), class: 'dropdown-item'
             = link_to "Configuración", destroy_user_session_path, class: 'dropdown-item'
             .dropdown-divider
             = link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'dropdown-item text-danger'

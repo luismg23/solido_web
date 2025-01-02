@@ -18,8 +18,17 @@
                 %tr
                   %th Email
                   %th Fecha de Creación
+                  %th.text-center Status del perfil
+                  %th.text-center Reset contraseña
                 %tbody
                   - @users.each do |user|
                     %tr
                       %td= user["email"]
                       %td= user["created_at"].strftime("%d/%m/%Y")
+                      %td.text-center
+                        - if user.can_login?
+                          %span.text-success
+                            %i.fa.fa-check-circle
+                        - else
+                          = link_to 'Crear perfil', new_profile_path(email: user["email"]), class: 'text-danger'
+                      %td.text-center= link_to 'Cambiar contraseña', edit_user_password_path(id: user), class: 'btn btn-warning'

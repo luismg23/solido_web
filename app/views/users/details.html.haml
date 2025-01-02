@@ -1,0 +1,28 @@
+%br
+%br
+
+.container
+  .row
+    .col-xs-12
+      %h1.col-md-5 Detalles del Perfil
+      %br
+      %table.table.table-striped.col-md-5
+        %thead
+          %tr
+            %th Campo
+            %th Valor
+        %tbody
+          %tr
+            %td Nombre
+            %td= @current_profile.firstname
+          %tr
+            %td Apellido
+            %td= @current_profile.lastname
+          %tr
+            %td Email
+            %td= @current_profile.email
+          %tr
+            %td Fecha de Creación
+            %td= @current_user.created_at.strftime('%d/%m/%Y')
+
+    = link_to "Reset Password", edit_user_password_path(id: @current_user.id), class: "reset-password-link"
