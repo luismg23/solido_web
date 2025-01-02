@@ -44,7 +44,7 @@ class Users::PasswordsController < Devise::PasswordsController
 
     # Actualizar la contraseña sin el token
     if resource.update(password_params)
-      bypass_sign_in(resource) # Vuelve a autenticar al usuario con la nueva contraseña
+      #bypass_sign_in(resource) # Vuelve a autenticar al usuario con la nueva contraseña
       redirect_to '/', notice: "Tu contraseña ha sido cambiada con éxito."
     else
       render :edit
