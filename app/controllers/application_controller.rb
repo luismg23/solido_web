@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
   def current_profile
     if params["profile"]
-      Rails.logger.info "daaa #{params["profile"]}"
       @profile = Profile.new(params["profile"].permit(:email, :firstname, :lastname, :rol))
       if @profile.save
         redirect_to '/'

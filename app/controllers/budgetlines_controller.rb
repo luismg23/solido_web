@@ -20,7 +20,6 @@ class BudgetlinesController < ApplicationController
     @checkdetails = Detail.by_budgetline_id(@budgetline["IdInterno"])
     @banks = Bank.all
 
-    Rails.logger.info "daa #{@banks}"
     detail_ids = @checkdetails.map(&:IdInternoCheque).uniq
     checks = detail_ids.map do |detail_id|
       Check.by_id(detail_id)

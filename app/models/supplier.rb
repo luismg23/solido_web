@@ -74,7 +74,6 @@ class Supplier
           'Content-Type' => 'application/json'
         }
       )
-      Rails.logger.info "response: #{response.inspect}"
       response.code
     end
   
