@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def index
-    Rails.logger.info "el current_profile es #{current_profile}"
     @users = User.all
   end
 
