@@ -19,9 +19,11 @@ Rails.application.routes.draw do
       get 'details'
       get :edit_password
       put :update_password  
+      delete :destroy
     end
   end
-    
+  get 'unauthorized', to: 'errors#unauthorized', as: :unauthorized
+
   resources :budgets do
     member do
       get 'details'

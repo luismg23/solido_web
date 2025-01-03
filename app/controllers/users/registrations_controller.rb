@@ -2,9 +2,23 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:new, :create]
-
+  include RolesHelper
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+
+  def create
+    admin_user = current_user
+    super do |resource|
+      if admin_user && admin?(current_profile.rol)
+        sign_in(admin_user)  # Volvemos a iniciar sesión como administrador, si es el caso
+        redirect_to users_path and return
+      end
+    end
+  end
+
+  def after_sign_up_path_for(resource)
+    users_path  # Redirigir a la página de inicio de sesión
+  end
 
   # GET /resource/sign_up
   # def new

@@ -12,8 +12,6 @@ class Users::PasswordsController < Devise::PasswordsController
   end
 
   def edit
-    Rails.logger.info "en el edit"
-    # Si el usuario está autenticado, permite editar su contraseña
     if @user
       self.resource = @user
       render :edit
