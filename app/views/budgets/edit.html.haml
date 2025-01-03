@@ -27,18 +27,24 @@
 
               .form-group.mb-3
                 %strong= f.label :monto_presupuestado, "Monto Presupuestado", class: "form-label"
-                = f.text_field :monto_presupuestado, class: "form-control"
-                %p.danger-text#amount-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+                %div{class: "input-group"}
+                  %span.input-group-text $
+                  = f.text_field :monto_presupuestado, class: "form-control"
+                  %p.danger-text#amount-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
               .form-group.mb-3
                 %strong= f.label :monto_erogado, "Monto Erogado", class: "form-label"
-                = f.text_field :monto_erogado, class: "form-control"
+                %div{class: "input-group"}
+                  %span.input-group-text $
+                  = f.text_field :monto_erogado, class: "form-control", readonly: true
                 %p.danger-text#amount-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
               .form-group.mb-3
                 %strong= f.label :monto_por_erogar, "Monto Por Erogar", class: "form-label"
-                = f.text_field :monto_por_erogar, class: "form-control"
-                %p.danger-text#amount-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
+                %div{class: "input-group"}
+                  %span.input-group-text $
+                  = f.text_field :monto_por_erogar, class: "form-control"
+                  %p.danger-text#amount-error{style: 'display: none;'} La data es incorrecta. Por favor, verifica los datos.
 
               .form-group.mb-3
                 %strong= f.label :Empresa
