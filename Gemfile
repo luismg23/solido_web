@@ -17,6 +17,7 @@ gem "mysql2", '~> 0.5.6'
 gem 'chartkick'
 gem 'cable_ready'
 gem 'stimulus_reflex', '3.5.0.rc3'
+gem "appsignal"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
