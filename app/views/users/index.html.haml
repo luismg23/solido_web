@@ -19,7 +19,8 @@
                   %th Email
                   %th Fecha de Creación
                   %th.text-center Status del perfil
-                  %th.text-center Reset contraseña
+                  %th.text-center Reset de contraseña
+                  %th.text-center Acciones
                 %tbody
                   - @users.each do |user|
                     %tr
@@ -32,3 +33,7 @@
                         - else
                           = link_to 'Crear perfil', new_profile_path(email: user["email"]), class: 'text-danger'
                       %td.text-center= link_to 'Cambiar contraseña', edit_user_password_path(id: user), class: 'btn btn-warning'
+                      %td.text-center= link_to 'Eliminar', user_path(user), 
+                        method: :delete, 
+                        class: 'text-danger', 
+                        data: { confirm: "¿Estás seguro de que deseas eliminar este usuario?" }

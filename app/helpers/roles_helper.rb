@@ -4,7 +4,8 @@ module RolesHelper
     create:  ["super_admin", "admin", "worker"],
     edit:    ["super_admin", "admin", "worker"],
     read:    ["super_admin", "admin", "worker", "read_only"],
-    delete:  ["super_admin", "admin", "worker"]
+    delete:  ["super_admin", "admin", "worker"],
+    admin:   ["super_admin", "admin"]
   }.freeze
 
   def role_has_permission?(role, action)
@@ -32,5 +33,9 @@ module RolesHelper
   def can_delete?(role)
     #false
     role_has_permission?(role, :delete)
+  end
+
+  def admin?(role)
+    role_has_permission?(role, :admin)
   end
 end
